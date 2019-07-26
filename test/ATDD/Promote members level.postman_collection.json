@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "47fbf94c-6f83-4330-8d07-51b2da164853",
+		"_postman_id": "6889e9cb-0eb6-471f-b227-6c5627c3956e",
 		"name": "Promote members level",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -884,7 +884,7 @@
 			"name": "Promote member ID 10034 Level Emeral Alpha (Lv.6) to Ruby Pub (Lv.7) unsuccess",
 			"item": [
 				{
-					"name": "Member ID 10034 is ดอน Emerald Alpha (Lv.6)",
+					"name": "Member ID 10034 is ดาวิน Emerald Alpha (Lv.6)",
 					"event": [
 						{
 							"listen": "test",
@@ -897,8 +897,8 @@
 									"    pm.response.to.have.status(200);",
 									"});",
 									"",
-									"pm.test(\"Name should be ดอน\", function () {",
-									"    pm.expect(jsonData.member_name).to.eql(\"ดอน\");",
+									"pm.test(\"Name should be ดาวิน\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"ดาวิน\");",
 									"});",
 									"",
 									"pm.test(\"Level should be 6\", function () {",
@@ -909,8 +909,8 @@
 									"    pm.expect(jsonData.my_point).to.eql(1000);",
 									"});",
 									"",
-									"pm.test(\"Team point is 15000\", function () {",
-									"    pm.expect(jsonData.team_point).to.eql(15000);",
+									"pm.test(\"Team point is 19950\", function () {",
+									"    pm.expect(jsonData.team_point).to.eql(19950);",
 									"});",
 									"",
 									"pm.test(\"Monthly point is 350\", function () {",
@@ -999,7 +999,7 @@
 								"id": "5957a311-f6d9-4e00-94dd-92ad48dd1053",
 								"exec": [
 									"var jsonData = pm.response.json();",
-									"",
+									"pm.environment.get(\"variable_key\");",
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
