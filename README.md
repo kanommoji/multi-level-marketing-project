@@ -52,8 +52,8 @@ Method : POST
 ตัวอย่าง Request Body
 
     {
-        "new_mymo_referral":29,
-        "new_mymo_points":50
+        "new_referral":29,
+        "new_points":50
     }
 
 ตัวอย่าง Response Body
@@ -72,8 +72,8 @@ Method : POST
 
 | Key | Description |
 |--|--|
-| new_mymo_referral | Id ของสมาชิกที่หาลูกค้า |
-| new_mymo_points | Action ของลูกค้า |
+| new_referral | Id ของสมาชิกที่หาลูกค้า |
+| new_points | Action ของลูกค้า |
 
 **Response Body** 
 
