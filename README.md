@@ -2,14 +2,14 @@
 
 ## ข้อตกลง Name Convention
 1. การตั้งชื่อเทส ให้ตั้งในรูปแบบ Snake Case โดยประกอบด้วยชื่อฟังก์ชันที่ทดสอบ Input และ Output
-เชื่อมชื่อฟังก์ชันกับ Input ด้วย By และเชื่อมกับ Output ด้วย Should_Return <br>
+เชื่อมชื่อฟังก์ชันกับ Input ด้วย By และเชื่อมกับ Output ด้วย Should_Be <br>
 ยกตัวอย่างเช่น Test_CheckCondition_By_Member_Level_6_MonthlyPoint_400_TeamPoint_20050_TeamMemberMoreEmerald_2_Should_Be_True()
 
 
 ## ข้อตกลงใน Commit message
-ADD : เพิ่ม สร้าง
-DELETE : ลบ
-EDIT : แก้ไข ปรับปรุง
+ADD : เพิ่ม สร้าง <br>
+DELETE : ลบ<br>
+EDIT : แก้ไข ปรับปรุง<br>
 
 Example : `"ADD : สร้างไฟล์ README.md และเพิ่มข้อตกลงในการทำงาน"`
 
@@ -52,8 +52,8 @@ Method : POST
 ตัวอย่าง Request Body
 
     {
-        "new_referral":29,
-        "new_points":50
+        "user_referral":10029,
+        "new_point":50
     }
 
 ตัวอย่าง Response Body
@@ -72,16 +72,16 @@ Method : POST
 
 | Key | Description |
 |--|--|
-| new_referral | Id ของสมาชิกที่หาลูกค้า |
-| new_points | Action ของลูกค้า |
+| user_referral | ID ของสมาชิกที่หาลูกค้า |
+| new_point | Point ที่ได้รับ |
 
 **Response Body** 
 
 | Key | Description |
 |--|--|
-| member_id | Id ของสมาชิก |
+| member_id | ID ของสมาชิก |
 | member_name | ชื่อสมาชิก |
-| leader_id | Id ของหัวหน้าทีม |
+| leader_id | ID ของหัวหน้าทีม |
 | level | ตำแหน่ง |
 | my_point | คะแนนของสมาชิก |
 | monthly_point | คะแนนสะสมผลงานรายเดือน |
