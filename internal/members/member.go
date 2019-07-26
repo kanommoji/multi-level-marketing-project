@@ -86,12 +86,12 @@ func getCurrentMonth() int {
 	return int(time.Now().Month())
 }
 
-func Promote(memberAlpha Member) bool {
+func Promote(member Member) bool {
 	db := mlmDB.Connect()
 	defer db.Close()
 	statement, _ := db.Prepare("UPDATE mlm.members SET level=? WHERE id=?")
-	memberAlpha.Level++
-	_, err := statement.Exec(memberAlpha.Level, memberAlpha.MemberId)
+	member.Level++
+	_, err := statement.Exec(member.Level, member.MemberId)
 	if err != nil {
 		panic(err.Error())
 		return false
@@ -99,12 +99,12 @@ func Promote(memberAlpha Member) bool {
 	return true
 }
 
-func Demote(memberAlpha Member) bool {
+func Demote(member Member) bool {
 	db := mlmDB.Connect()
 	defer db.Close()
 	statement, _ := db.Prepare("UPDATE mlm.members SET level=? WHERE id=?")
-	memberAlpha.Level--
-	_, err := statement.Exec(memberAlpha.Level, memberAlpha.MemberId)
+	member.Level--
+	_, err := statement.Exec(member.Level, member.MemberId)
 	if err != nil {
 		panic(err.Error())
 		return false
@@ -131,23 +131,23 @@ func FindMember(memberId int) Member {
 	defer db2.Close()
 	statement, _ := db2.Prepare("SELECT * FROM mlm.members WHERE id=?")
 	row, _ := statement.Query(memberId)
-	var memberAlpha Member
+	var member Member
 	if row.Next() {
 		err := row.Scan(
-			&memberAlpha.MemberId,
-			&memberAlpha.MemberName,
-			&memberAlpha.LeaderId,
-			&memberAlpha.Level,
+			&member.MemberId,
+			&member.MemberName,
+			&member.LeaderId,
+			&member.Level,
 		)
 		if err != nil {
 			panic(err.Error())
 		}
 	}
-	memberAlpha.MyPoint = getMyPoint(memberId)
-	memberAlpha.MonthlyPoint = getMonthlyPoint(memberId, getCurrentMonth(), time.Now().Year())
-	memberAlpha.TeamMember = CountTeamMember(memberId)
-	memberAlpha.TeamPoint = getTeamPoint(memberId)
-	return memberAlpha
+	member.MyPoint = getMyPoint(memberId)
+	member.MonthlyPoint = getMonthlyPoint(memberId, getCurrentMonth(), time.Now().Year())
+	member.TeamMember = CountTeamMember(memberId)
+	member.TeamPoint = getTeamPoint(memberId)
+	return member
 }
 
 func getTeamPoint(memberId int) int {
@@ -165,9 +165,9 @@ func getTeamPoint(memberId int) int {
 }
 
 func VerifyLevel(memberId int) bool {
-	memberAlpha := FindMember(memberId)
-	if checkCondition(memberAlpha) {
-		return Promote(memberAlpha)
+	member := FindMember(memberId)
+	if checkCondition(member) {
+		return Promote(member)
 	}
 	return false
 }

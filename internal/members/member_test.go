@@ -4,7 +4,7 @@ import "testing"
 
 func Test_CheckCondition_By_Member_Level_6_MonthlyPoint_400_TeamPoint_20050_TeamMemberHigherEmerald_2_Should_Be_True(t *testing.T) {
 	expectedResult := true
-	detailsMemberAlpha := Member{
+	member := Member{
 		Level:        6,
 		MonthlyPoint: 400,
 		TeamPoint:    20050,
@@ -13,7 +13,7 @@ func Test_CheckCondition_By_Member_Level_6_MonthlyPoint_400_TeamPoint_20050_Team
 		},
 	}
 
-	actualResult := checkCondition(detailsMemberAlpha)
+	actualResult := checkCondition(member)
 
 	if expectedResult != actualResult {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
@@ -22,7 +22,7 @@ func Test_CheckCondition_By_Member_Level_6_MonthlyPoint_400_TeamPoint_20050_Team
 
 func Test_CheckCondition_By_Member_Level_6_MonthlyPoint_400_TeamPoint_19050_TeamMemberHigherEmerald_2_Should_Be_False(t *testing.T) {
 	expectedResult := false
-	detailsMemberAlpha := Member{
+	member := Member{
 		Level:        6,
 		MonthlyPoint: 400,
 		TeamPoint:    19050,
@@ -31,7 +31,7 @@ func Test_CheckCondition_By_Member_Level_6_MonthlyPoint_400_TeamPoint_19050_Team
 		},
 	}
 
-	actualResult := checkCondition(detailsMemberAlpha)
+	actualResult := checkCondition(member)
 
 	if expectedResult != actualResult {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
@@ -74,6 +74,7 @@ func Test_GetMyPoint_By_Member_Id_10029_Should_Be_1000(t *testing.T) {
 	expectedResult := 1000
 
 	actualResult := getMyPoint(10029)
+
 	if expectedResult != actualResult {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
 	}
@@ -91,7 +92,7 @@ func Test_Promote_By_Member_Id_10029_Level_6_Should_Be_True(t *testing.T) {
 	Demote(Member{MemberId: 10029, Level: 7})
 }
 
-func Test_FindMemberAlpha_By_Member_id_10029_Should_Be_MemberAlpha(t *testing.T) {
+func Test_FindMemberAlpha_By_Member_Id_10029_Should_Be_Member(t *testing.T) {
 	expectedResult := Member{
 		MemberId:     10029,
 		MemberName:   "ชนา",
