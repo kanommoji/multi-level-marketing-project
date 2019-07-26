@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "82866114-1e9d-4a42-ac91-c8d4e2172044",
+		"name": "Promote member level",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Promote member ID 10029 Level Emeral Alpha (Lv.6) to Ruby Pub (Lv.7) success",
+			"item": [
+				{
+					"name": "Member ID 29 is ชนา Emeral Alpha (Lv.6)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5957a311-f6d9-4e00-94dd-92ad48dd1053",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be ชนา\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"ชนา\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 6\", function () {",
+									"    pm.expect(jsonData.level).to.eql(6);",
+									"});",
+									"",
+									"pm.test(\"My point is 1000\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(1000);",
+									"});",
+									"",
+									"pm.test(\"Team point is 20000\", function () {",
+									"    pm.expect(jsonData.team_point).to.eql(20000);",
+									"});",
+									"",
+									"pm.test(\"Monthly point is 350\", function () {",
+									"    pm.expect(jsonData.monthly_point).to.eql(350);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/members/10029",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"10029"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add points 50 to member ID 10029",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "983f1918-1daf-4796-bd44-8c365388ba6f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user_referral\":10029,\n\t\"new_point\":50\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/action_point",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"action_point"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Member ID 29 should get promoted to Ruby Pub (Lv.7)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5957a311-f6d9-4e00-94dd-92ad48dd1053",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be ชนา\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"ชนา\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 7\", function () {",
+									"    pm.expect(jsonData.level).to.eql(7);",
+									"});",
+									"",
+									"pm.test(\"My point is 1050\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(1050);",
+									"});",
+									"",
+									"pm.test(\"Team point is 20050\", function () {",
+									"    pm.expect(jsonData.team_point).to.eql(20050);",
+									"});",
+									"",
+									"pm.test(\"Monthly point is 400\", function () {",
+									"    pm.expect(jsonData.monthly_point).to.eql(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/members/10029",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"10029"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

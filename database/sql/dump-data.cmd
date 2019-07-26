@@ -1,0 +1,1 @@
+mysqldump --user=root --password=root mlm > ./backup.sql
