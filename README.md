@@ -48,6 +48,8 @@ Example : `"ADD : สร้างไฟล์ README.md และเพิ่ม
 
 และนำไฟล์ **database/sql/prepared-data.sql** ลงฐานข้อมูล
 
+    $mysql -u root -p root mlm < database/sql/prepared-data.sql
+
 
 ## วิธีการใช้งาน API
 เริ่มต้น Start main
