@@ -2,7 +2,7 @@ package members
 
 import "testing"
 
-func Test_CheckCondition_By_Member_Level_6_MonthlyPoint_400_TeamPoint_20050_TeamMemberMoreEmerald_2_Should_Be_True(t *testing.T) {
+func Test_CheckCondition_By_Member_Level_6_MonthlyPoint_400_TeamPoint_20050_TeamMemberHigherEmerald_2_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	detailsMemberAlpha := Member{
 		Level:        6,
@@ -20,7 +20,7 @@ func Test_CheckCondition_By_Member_Level_6_MonthlyPoint_400_TeamPoint_20050_Team
 	}
 }
 
-func Test_CheckCondition_By_Member_Level_6_MonthlyPoint_400_TeamPoint_19050_TeamMemberMoreEmerald_2_Should_Be_False(t *testing.T) {
+func Test_CheckCondition_By_Member_Level_6_MonthlyPoint_400_TeamPoint_19050_TeamMemberHigherEmerald_2_Should_Be_False(t *testing.T) {
 	expectedResult := false
 	detailsMemberAlpha := Member{
 		Level:        6,
