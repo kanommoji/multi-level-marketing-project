@@ -1,19 +1,21 @@
 package members
 
 import (
-	mlmDB "multi-level-marketing-project/database/db"
 	"log"
+	mlmDB "multi-level-marketing-project/database/db"
 	"time"
 )
 
 const (
-	PearlPup                                       = 1
-	EmeraldPup                                     = 4
-	EmeraldAlpha                                   = 6
-	RubyPup                                        = 7
-	conditionMonthlyPointOfEmeraldAlpha            = 400
-	conditionTeamPointOfEmeraldAlpha               = 20000
-	conditionTeamMemberHigherEmeraldOfEmeraldAlpha = 2
+	PearlPup     = 1
+	EmeraldPup   = 4
+	EmeraldAlpha = 6
+	RubyPup      = 7
+
+	conditionMyPointOfPearlJuvenile           = 600
+	conditionMonthlyPointOfRubyPup            = 400
+	conditionTeamPointOfRubyPup               = 20000
+	conditionTeamMemberHigherEmeraldOfRubyPup = 2
 )
 
 type Member struct {
@@ -34,7 +36,10 @@ type TeamMember struct {
 }
 
 func checkCondition(member Member) bool {
-	if member.Level == EmeraldAlpha && member.MonthlyPoint >= conditionMonthlyPointOfEmeraldAlpha && member.TeamPoint > conditionTeamPointOfEmeraldAlpha && member.TeamMember.HigherEmerald >= conditionTeamMemberHigherEmeraldOfEmeraldAlpha {
+	if member.Level == PearlPup && member.MyPoint > conditionMyPointOfPearlJuvenile {
+		return true
+	}
+	if member.Level == EmeraldAlpha && member.MonthlyPoint >= conditionMonthlyPointOfRubyPup && member.TeamPoint > conditionTeamPointOfRubyPup && member.TeamMember.HigherEmerald >= conditionTeamMemberHigherEmeraldOfRubyPup {
 		return true
 	}
 	return false
