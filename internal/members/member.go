@@ -48,29 +48,30 @@ func checkCondition(member Member) bool {
 func CountTeamMember(memberId int) TeamMember {
 	db := mlmDB.Connect()
 	defer db.Close()
-	statement, _ := db.Prepare("SELECT COUNT(id) AS HigherPearl FROM mlm.members WHERE leader_id=? AND level >= ?")
-	resultCountCountHigherPearlPup, _ := statement.Query(memberId, PearlPup)
-	resultCountHigherEmeraldPup, _ := statement.Query(memberId, EmeraldPup)
-	resultCountHigherRubyPup, _ := statement.Query(memberId, RubyPup)
+	statement, err := db.Prepare("SELECT COUNT(id) AS HigherThanLevel FROM mlm.members WHERE leader_id=? AND level >= ?")
+	if err != nil {
+		panic(err.Error())
+	}
+	resultCountCountHigherPearlPup := statement.QueryRow(memberId, PearlPup)
+	resultCountHigherEmeraldPup := statement.QueryRow(memberId, EmeraldPup)
+	resultCountHigherRubyPup := statement.QueryRow(memberId, RubyPup)
 	var teamMember TeamMember
-	if resultCountCountHigherPearlPup.Next() {
-		err := resultCountCountHigherPearlPup.Scan(&teamMember.HigherPearl)
-		if err != nil {
-			panic(err.Error())
-		}
+
+	err = resultCountCountHigherPearlPup.Scan(&teamMember.HigherPearl)
+	if err != nil {
+		panic(err.Error())
 	}
-	if resultCountHigherEmeraldPup.Next() {
-		err := resultCountHigherEmeraldPup.Scan(&teamMember.HigherEmerald)
-		if err != nil {
-			panic(err.Error())
-		}
+
+	err = resultCountHigherEmeraldPup.Scan(&teamMember.HigherEmerald)
+	if err != nil {
+		panic(err.Error())
 	}
-	if resultCountHigherRubyPup.Next() {
-		err := resultCountHigherRubyPup.Scan(&teamMember.HigherRuby)
-		if err != nil {
-			panic(err.Error())
-		}
+
+	err = resultCountHigherRubyPup.Scan(&teamMember.HigherRuby)
+	if err != nil {
+		panic(err.Error())
 	}
+
 	return teamMember
 }
 
