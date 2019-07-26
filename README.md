@@ -39,6 +39,15 @@ Example : `"ADD : สร้างไฟล์ README.md และเพิ่ม
             t.Errorf("Expect %v but get %v", expectedResult, actualResult)
         }
     }
+    
+## เตรียมฐานข้อมูล
+(MariaDB 10.2)
+
+ตั้งค่าที่อยู่ Database ที่ไฟล์ 
+**database/db/database.go**
+
+และนำไฟล์ **database/sql/prepared-data.sql** ลงฐานข้อมูล
+
 
 ## วิธีการใช้งาน API
 เริ่มต้น Start main
