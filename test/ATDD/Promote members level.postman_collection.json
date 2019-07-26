@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f0578c7b-5599-4d4f-8826-88eb3f1b7b70",
+		"_postman_id": "47fbf94c-6f83-4330-8d07-51b2da164853",
 		"name": "Promote members level",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -99,7 +99,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"new_mymo_referral\":10029,\n\t\"new_mymo_points\":50\n}"
+							"raw": "{\n\t\"user_referral\":10029,\n\t\"new_points\":50\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/action_point",
@@ -274,7 +274,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"new_referral\":10030,\n\t\"new_points\":150\n}"
+							"raw": "{\n\t\"user_referral\":10030,\n\t\"new_points\":150\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/action_point",
@@ -449,7 +449,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"new_referral\":10031,\n\t\"new_points\":50\n}"
+							"raw": "{\n\t\"user_referral\":10031,\n\t\"new_points\":50\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/action_point",
@@ -624,7 +624,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"new_referral\":10032,\n\t\"new_points\":150\n}"
+							"raw": "{\n\t\"user_referral\":10032,\n\t\"new_points\":150\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/action_point",
@@ -799,7 +799,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"new_referral\":10033,\n\t\"new_points\":20\n}"
+							"raw": "{\n\t\"user_referral\":10033,\n\t\"new_points\":20\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/action_point",
@@ -974,7 +974,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"new_referral\":10034,\n\t\"new_points\":50\n}"
+							"raw": "{\n\t\"user_referral\":10034,\n\t\"new_points\":50\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/action_point",
@@ -1171,7 +1171,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"new_referral\":10035,\n\t\"new_points\":50\n}"
+							"raw": "{\n\t\"user_referral\":10035,\n\t\"new_points\":50\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/action_point",
@@ -1368,7 +1368,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"new_referral\":10036,\n\t\"new_points\":20\n}"
+							"raw": "{\n\t\"user_referral\":10036,\n\t\"new_points\":20\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/action_point",
