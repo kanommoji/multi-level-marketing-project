@@ -1,13 +1,13 @@
 package point
 
 import (
-	alphaDB "multi-level-marketing-project/database/db"
+	mlmDB "multi-level-marketing-project/database/db"
 	"time"
 )
 
 type Action struct {
-	UserReferral   int `json:"user_referral"`
-	NewPoint int `json:"new_point"`
+	UserReferral int `json:"user_referral"`
+	NewPoint     int `json:"new_point"`
 }
 
 type Record struct {
@@ -18,9 +18,9 @@ type Record struct {
 }
 
 func RecordPoint(action Action) bool {
-	db := alphaDB.Connect()
+	db := mlmDB.Connect()
 	defer db.Close()
-	statement, _ := db.Prepare(`INSERT INTO mlm.point_records (member_id, point)VALUES (?,?)`)
+	statement, _ := db.Prepare(`INSERT INTO mlm.point_records (member_id, point) VALUES (?,?)`)
 	_, err := statement.Exec(action.UserReferral, action.NewPoint)
 	if err != nil {
 		return false

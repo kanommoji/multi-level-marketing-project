@@ -2,10 +2,10 @@ package point
 
 import "testing"
 
-func RecordPoint_By_Member_Id_10010_Point_50_Should_Be_True(t *testing.T) {
+func Test_RecordPoint_By_Member_Id_99999_Point_50_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	action := Action{
-		UserReferral: 10010,
+		UserReferral: 99999,
 		NewPoint:     50,
 	}
 

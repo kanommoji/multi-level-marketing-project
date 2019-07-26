@@ -1,10 +1,10 @@
 package handler
 
 import (
-	"multi-level-marketing-project/internal/members"
 	"bytes"
 	"encoding/json"
 	"io/ioutil"
+	"multi-level-marketing-project/internal/members"
 	"net/http"
 	"strconv"
 
@@ -14,20 +14,21 @@ import (
 )
 
 func AddPoint(w http.ResponseWriter, r *http.Request) {
-	pointAction, err := decodeAction(r)
+	action, err := decodeAction(r)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	if !point.RecordPoint(pointAction) {
+	if !point.RecordPoint(action) {
 		w.WriteHeader(http.StatusBadRequest)
+	} else {
+		members.VerifyLevel(action.UserReferral)
 	}
-	members.VerifyLevel(pointAction.UserReferral)
 }
 
-func decodeAction(request *http.Request) (point.Action, error) {
+func decodeAction(r *http.Request) (point.Action, error) {
 	var action point.Action
-	body, err := ioutil.ReadAll(request.Body)
+	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		return action, err
 	}
@@ -39,13 +40,13 @@ func decodeAction(request *http.Request) (point.Action, error) {
 }
 
 func GetMember(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	memberId, err := strconv.Atoi(vars["key"])
+	pathVariables := mux.Vars(r)
+	memberID, err := strconv.Atoi(pathVariables["key"])
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	member := members.FindMember(memberId)
+	member := members.FindMember(memberID)
 	err = json.NewEncoder(w).Encode(&member)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
