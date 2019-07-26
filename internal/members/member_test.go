@@ -124,7 +124,7 @@ func Test_GetTeamPoint_By_Member_Id_10029_Should_Be_20000(t *testing.T) {
 	}
 }
 
-func Test_VerifyLevel_By_Member_id_30001_Should_Be_True(t *testing.T) {
+func Test_VerifyLevel_By_Member_Id_30001_Should_Be_True(t *testing.T) {
 	expectedResult := true
 
 	actualResult := VerifyLevel(30001)
