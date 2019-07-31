@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6889e9cb-0eb6-471f-b227-6c5627c3956e",
+		"_postman_id": "e2bd4dd2-6981-4ccb-9174-2c06fd97b70d",
 		"name": "Promote members level",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1468,6 +1468,324 @@
 							""
 						]
 					}
+				}
+			]
+		},
+		{
+			"name": "Promote member ID 10001 Level Pearl Pup (Lv.1) to Pearl Juvernile (Lv.2) success",
+			"item": [
+				{
+					"name": "Member ID 10001 is อะธีน่า Pearl Pup (Lv.1)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5957a311-f6d9-4e00-94dd-92ad48dd1053",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be อะธีน่า\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"อะธีน่า\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 1\", function () {",
+									"    pm.expect(jsonData.level).to.eql(1);",
+									"});",
+									"",
+									"pm.test(\"My point is 550\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(550);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/members/10001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"10001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new user points 70 to member ID 10001",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "983f1918-1daf-4796-bd44-8c365388ba6f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user_referral\":10001,\n\t\"new_point\":70\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/action_point",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"action_point"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Member ID 10001 should get promoted to Pearl Juvernile (Lv.2)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5957a311-f6d9-4e00-94dd-92ad48dd1053",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be อะธีน่า\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"อะธีน่า\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 2\", function () {",
+									"    pm.expect(jsonData.level).to.eql(2);",
+									"});",
+									"",
+									"pm.test(\"My point is 620\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(620);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/members/10001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"10001"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Promote member ID 10002 Level Pearl Pup (Lv.1) to Pearl Juvernile (Lv.2) success Copy",
+			"item": [
+				{
+					"name": "Member ID 10002 is โพไซดอน Pearl Pup (Lv.1)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5957a311-f6d9-4e00-94dd-92ad48dd1053",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be โพไซดอน\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"โพไซดอน\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 1\", function () {",
+									"    pm.expect(jsonData.level).to.eql(1);",
+									"});",
+									"",
+									"pm.test(\"My point is 550\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(550);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/members/10002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"10002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new user points 50 to member ID 10029",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "983f1918-1daf-4796-bd44-8c365388ba6f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user_referral\":10002,\n\t\"new_point\":50\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/action_point",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"action_point"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Member ID 10009 should be Pearl Pub (L",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5957a311-f6d9-4e00-94dd-92ad48dd1053",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be โพไซดอน\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"โพไซดอน\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 1\", function () {",
+									"    pm.expect(jsonData.level).to.eql(1);",
+									"});",
+									"",
+									"pm.test(\"My point is 600\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(600);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/members/10002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"10002"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
