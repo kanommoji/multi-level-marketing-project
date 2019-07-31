@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1ac39cab-8197-47f2-88a8-36ac7597d8f3",
+		"_postman_id": "bfb025d3-9cdb-4ff4-87bc-f14c7299b611",
 		"name": "Promote members level",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1472,7 +1472,7 @@
 			]
 		},
 		{
-			"name": "Promote member ID 10001 Level Pearl Pup (Lv.1) to Pearl Juvernile (Lv.2) success",
+			"name": "Promote member ID 10001 Level Pearl Pup (Lv.1) to Pearl Juvenile (Lv.2) success",
 			"item": [
 				{
 					"name": "Member ID 10001 is อะธีน่า Pearl Pup (Lv.1)",
@@ -1574,7 +1574,7 @@
 					"response": []
 				},
 				{
-					"name": "Member ID 10001 should get promoted to Pearl Juvernile (Lv.2)",
+					"name": "Member ID 10001 should get promoted to Pearl Juvenile (Lv.2)",
 					"event": [
 						{
 							"listen": "test",
@@ -1631,7 +1631,7 @@
 			]
 		},
 		{
-			"name": "Promote member ID 10002 Level Pearl Pup (Lv.1) to Pearl Juvernile (Lv.2) unsuccess",
+			"name": "Promote member ID 10002 Level Pearl Pup (Lv.1) to Pearl Juvenile (Lv.2) unsuccess",
 			"item": [
 				{
 					"name": "Member ID 10002 is โพไซดอน Pearl Pup (Lv.1)",
@@ -2166,8 +2166,8 @@
 									"    pm.expect(jsonData.level).to.eql(11);",
 									"});",
 									"",
-									"pm.test(\"My point is 1000\", function () {",
-									"    pm.expect(jsonData.my_point).to.eql(1000);",
+									"pm.test(\"My point is 3000\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(3000);",
 									"});",
 									"",
 									"pm.test(\"Team point is 200000\", function () {",
@@ -2273,8 +2273,8 @@
 									"    pm.expect(jsonData.level).to.eql(12);",
 									"});",
 									"",
-									"pm.test(\"My point is 1300\", function () {",
-									"    pm.expect(jsonData.my_point).to.eql(1300);",
+									"pm.test(\"My point is 3300\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(3300);",
 									"});",
 									"",
 									"",
@@ -2342,16 +2342,16 @@
 									"    pm.expect(jsonData.level).to.eql(11);",
 									"});",
 									"",
-									"pm.test(\"My point is 1000\", function () {",
-									"    pm.expect(jsonData.my_point).to.eql(1000);",
+									"pm.test(\"My point is 3000\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(3000);",
 									"});",
 									"",
 									"pm.test(\"Team point is 199970\", function () {",
 									"    pm.expect(jsonData.team_point).to.eql(199970);",
 									"});",
 									"",
-									"pm.test(\"Monthly point is 1970\", function () {",
-									"    pm.expect(jsonData.monthly_point).to.eql(1970);",
+									"pm.test(\"Monthly point is 2000\", function () {",
+									"    pm.expect(jsonData.monthly_point).to.eql(2000);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2449,8 +2449,8 @@
 									"    pm.expect(jsonData.level).to.eql(11);",
 									"});",
 									"",
-									"pm.test(\"My point is 1030\", function () {",
-									"    pm.expect(jsonData.my_point).to.eql(1030);",
+									"pm.test(\"My point is 3030\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(3030);",
 									"});",
 									"",
 									"",
@@ -2458,8 +2458,8 @@
 									"    pm.expect(jsonData.team_point).to.eql(200000);",
 									"});",
 									"",
-									"pm.test(\"Monthly point is 2000\", function () {",
-									"    pm.expect(jsonData.monthly_point).to.eql(2000);",
+									"pm.test(\"Monthly point is 2030\", function () {",
+									"    pm.expect(jsonData.monthly_point).to.eql(2030);",
 									"});"
 								],
 								"type": "text/javascript"
