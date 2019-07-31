@@ -9,15 +9,21 @@ import (
 const (
 	levelPearlPup      = 1
 	levelPearlJuvenile = 2
+	levelPearlAlpha    = 3
 	levelEmeraldPup    = 4
 	levelEmeraldAlpha  = 6
 	levelRubyPup       = 7
 
 	conditionMyPointOfPearlJuvenile = 600
 
-	conditionMonthlyPointOfRubyPup            = 400
-	conditionTeamPointOfRubyPup               = 20000
-	conditionTeamMemberHigherEmeraldOfRubyPup = 2
+	conditionMonthlyPointOfEmeraldPup = 100
+	conditionMonthlyPointOfRubyPup    = 400
+
+	conditionTeamPointOfEmeraldPup = 4000
+	conditionTeamPointOfRubyPup    = 20000
+
+	conditionTeamMemberHigherPearl   = 2
+	conditionTeamMemberHigherEmerald = 2
 )
 
 type Member struct {
@@ -49,10 +55,17 @@ func checkCondition(member Member) bool {
 	if member.Level == levelPearlPup && member.MyPoint > 600 {
 		return true
 	}
+	if member.Level == levelPearlAlpha &&
+		member.MonthlyPoint >= conditionMonthlyPointOfEmeraldPup &&
+		member.TeamPoint > conditionTeamPointOfEmeraldPup &&
+		member.TeamMember.HigherPearl >= conditionTeamMemberHigherPearl {
+
+		return true
+	}
 	if member.Level == levelEmeraldAlpha &&
 		member.MonthlyPoint >= conditionMonthlyPointOfRubyPup &&
 		member.TeamPoint > conditionTeamPointOfRubyPup &&
-		member.TeamMember.HigherEmerald >= conditionTeamMemberHigherEmeraldOfRubyPup {
+		member.TeamMember.HigherEmerald >= conditionTeamMemberHigherEmerald {
 		return true
 	}
 	return false

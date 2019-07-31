@@ -58,6 +58,114 @@ func Test_CheckCondition_By_Member_Level_1_MyPoint_40_Should_Be_False(t *testing
 	}
 }
 
+func Test_CheckCondition_By_Member_Level_3_MonthlyPoint_120_TeamPoint_4020_TeamMemberHigherPearl_2_Should_Be_True(t *testing.T) {
+	expectedResult := true
+	member := Member{
+		Level:        3,
+		MonthlyPoint: 120,
+		TeamPoint:    4020,
+		TeamMember: TeamMember{
+			HigherPearl: 2,
+		},
+	}
+
+	actualResult := checkCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CheckCondition_By_Member_Level_3_MonthlyPoint_140_TeamPoint_5520_TeamMemberHigherPearl_2_Should_Be_True(t *testing.T) {
+	expectedResult := true
+	member := Member{
+		Level:        3,
+		MonthlyPoint: 140,
+		TeamPoint:    5520,
+		TeamMember: TeamMember{
+			HigherPearl: 2,
+		},
+	}
+
+	actualResult := checkCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CheckCondition_By_Member_Level_3_MonthlyPoint_100_TeamPoint_3550_TeamMemberHigherPearl_1_Should_Be_False(t *testing.T) {
+	expectedResult := false
+	member := Member{
+		Level:        3,
+		MonthlyPoint: 100,
+		TeamPoint:    3550,
+		TeamMember: TeamMember{
+			HigherPearl: 1,
+		},
+	}
+
+	actualResult := checkCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CheckCondition_By_Member_Level_3_MonthlyPoint_120_TeamPoint_4020_TeamMemberHigherPearl_1_Should_Be_False(t *testing.T) {
+	expectedResult := false
+	member := Member{
+		Level:        3,
+		MonthlyPoint: 120,
+		TeamPoint:    4020,
+		TeamMember: TeamMember{
+			HigherPearl: 1,
+		},
+	}
+
+	actualResult := checkCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CheckCondition_By_Member_Level_3_MonthlyPoint_140_TeamPoint_5520_TeamMemberHigherPearl_1_Should_Be_False(t *testing.T) {
+	expectedResult := false
+	member := Member{
+		Level:        3,
+		MonthlyPoint: 140,
+		TeamPoint:    5520,
+		TeamMember: TeamMember{
+			HigherPearl: 1,
+		},
+	}
+
+	actualResult := checkCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CheckCondition_By_Member_Level_3_MonthlyPoint_70_TeamPoint_3520_TeamMemberHigherPearl_2_Should_Be_False(t *testing.T) {
+	expectedResult := false
+	member := Member{
+		Level:        3,
+		MonthlyPoint: 70,
+		TeamPoint:    3520,
+		TeamMember: TeamMember{
+			HigherPearl: 2,
+		},
+	}
+
+	actualResult := checkCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
 func Test_CheckCondition_By_Member_Level_6_MonthlyPoint_400_TeamPoint_20050_TeamMemberHigherEmerald_2_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	member := Member{
