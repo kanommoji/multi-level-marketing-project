@@ -7,10 +7,13 @@ import (
 )
 
 const (
-	levelPearlPup     = 1
-	levelEmeraldPup   = 4
-	levelEmeraldAlpha = 6
-	levelRubyPup      = 7
+	levelPearlPup      = 1
+	levelPearlJuvenile = 2
+	levelEmeraldPup    = 4
+	levelEmeraldAlpha  = 6
+	levelRubyPup       = 7
+
+	conditionMyPointOfPearlJuvenile = 600
 
 	conditionMonthlyPointOfRubyPup            = 400
 	conditionTeamPointOfRubyPup               = 20000
@@ -43,6 +46,9 @@ func VerifyLevel(memberId int) bool {
 }
 
 func checkCondition(member Member) bool {
+	if member.Level == levelPearlPup && member.MyPoint > 600 {
+		return true
+	}
 	if member.Level == levelEmeraldAlpha &&
 		member.MonthlyPoint >= conditionMonthlyPointOfRubyPup &&
 		member.TeamPoint > conditionTeamPointOfRubyPup &&

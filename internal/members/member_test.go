@@ -2,6 +2,62 @@ package members
 
 import "testing"
 
+func Test_CheckCondition_By_Member_Level_1_MyPoint_620_Should_Be_True(t *testing.T) {
+	expectedResult := true
+	member := Member{
+		Level:   1,
+		MyPoint: 620,
+	}
+
+	actualResult := checkCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CheckCondition_By_Member_Level_1_MyPoint_600_Should_Be_False(t *testing.T) {
+	expectedResult := false
+	member := Member{
+		Level:   1,
+		MyPoint: 600,
+	}
+
+	actualResult := checkCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CheckCondition_By_Member_Level_1_MyPoint_570_Should_Be_False(t *testing.T) {
+	expectedResult := false
+	member := Member{
+		Level:   1,
+		MyPoint: 570,
+	}
+
+	actualResult := checkCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CheckCondition_By_Member_Level_1_MyPoint_40_Should_Be_False(t *testing.T) {
+	expectedResult := false
+	member := Member{
+		Level:   1,
+		MyPoint: 40,
+	}
+
+	actualResult := checkCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
 func Test_CheckCondition_By_Member_Level_6_MonthlyPoint_400_TeamPoint_20050_TeamMemberHigherEmerald_2_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	member := Member{
