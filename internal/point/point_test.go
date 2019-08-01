@@ -2,7 +2,7 @@ package point
 
 import (
 	"database/sql"
-	"multi-level-marketing-project/internal/members"
+	"multi-level-marketing-project/models"
 	"testing"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -19,7 +19,7 @@ func DBConnection() (*sql.DB, error) {
 
 func Test_RecordPoint_By_MemberID_99999_Point_50_Should_be_True(t *testing.T) {
 	expectedResult := true
-	newUserPoint := members.NewUserPoint{
+	newUserPoint := models.NewUserPoint{
 		UserRefferal: 99999,
 		NewPoint:     50,
 	}

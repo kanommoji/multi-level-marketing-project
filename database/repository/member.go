@@ -2,7 +2,7 @@ package repository
 
 import (
 	"database/sql"
-	"multi-level-marketing-project/internal/members"
+	"multi-level-marketing-project/models"
 )
 
 func GetMyPoint(db *sql.DB, memberID int) int {
@@ -27,8 +27,8 @@ func GetMonthlyPoint(db *sql.DB, memberID int, month int, year int) int {
 	return monthlyPoint
 }
 
-func CountTeamMember(db *sql.DB, memberID int) members.TeamMember {
-	var teamMember members.TeamMember
+func CountTeamMember(db *sql.DB, memberID int) models.TeamMember {
+	var teamMember models.TeamMember
 	statement, err := db.Prepare(`SELECT COUNT(id) FROM members WHERE leader_id = ? AND level >= ?;`)
 	if err != nil {
 		return teamMember
@@ -53,8 +53,8 @@ func GetTeamPoint(db *sql.DB, memberID int) int {
 	return teamPoint
 }
 
-func GetMemberData(db *sql.DB, memberID int) members.Member {
-	var member members.Member
+func GetMemberData(db *sql.DB, memberID int) models.Member {
+	var member models.Member
 	statement, err := db.Prepare(`SELECT * FROM members WHERE id = ?`)
 	if err != nil {
 		return member

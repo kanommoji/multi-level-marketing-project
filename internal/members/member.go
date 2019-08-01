@@ -1,5 +1,12 @@
 package members
 
+import (
+	"database/sql"
+	"multi-level-marketing-project/database/repository"
+	"multi-level-marketing-project/models"
+	"time"
+)
+
 const (
 	levelPearlPup            = 1
 	levelPearlAlpha          = 3
@@ -20,7 +27,7 @@ const (
 	conditionTeamMemberHigherEmerald = 2
 )
 
-func CheckCondition(member Member) bool {
+func CheckCondition(member models.Member) bool {
 	if member.Level == levelPearlPup &&
 		member.MyPoint > conditionMyPointOfPearlJuvenile {
 		return true
@@ -45,24 +52,12 @@ func CheckCondition(member Member) bool {
 	return false
 }
 
-type Member struct {
-	MemberID     int
-	MemberName   string
-	LeaderID     int
-	Level        int
-	MyPoint      int
-	MonthlyPoint int
-	TeamPoint    int
-	TeamMember   TeamMember
-}
-
-type TeamMember struct {
-	HigherPearl   int
-	HigherEmerald int
-	HigherRuby    int
-}
-
-type NewUserPoint struct {
-	UserRefferal int
-	NewPoint     int
+func FindMember(db *sql.DB, memberID int) models.Member {
+	var member models.Member
+	member = repository.GetMemberData(db, memberID)
+	member.MyPoint = repository.GetMyPoint(db, memberID)
+	member.MonthlyPoint = repository.GetMonthlyPoint(db, memberID,int(time.Now().Month()),time.Now().Year())
+	member.TeamPoint = repository.GetTeamPoint(db, memberID)
+	member.TeamMember = repository.CountTeamMember(db, memberID)
+	return member
 }
