@@ -17,3 +17,15 @@ func Test_GetMyPoint_By_MemberID_10029_Should_be_Point_1000(t *testing.T) {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
 	}
 }
+
+func Test_GetMonthlyPoint_By_MemberID_10029_Should_be_MonthlyPoint_350(t *testing.T) {
+	expectedResult := 350
+
+	db, _ := DBConnection()
+	defer db.Close()
+	actualResult := GetMonthlyPoint(db, 10029, 7, 2019)
+
+	if actualResult != expectedResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
