@@ -1,6 +1,6 @@
 package models
 
 type NewUserPoint struct {
-	UserRefferal int
-	NewPoint     int
+	UserRefferal int `json:"user_referral"`
+	NewPoint     int `json:"new_point"`
 }
