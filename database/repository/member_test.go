@@ -75,3 +75,18 @@ func Test_GetMemberData_By_MemberID_10029_Should_be_Member(t *testing.T) {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
 	}
 }
+
+func Test_Promote_By_MemberID_10029_Level_6_Should_be_True(t *testing.T) {
+	expectedResult := true
+
+	db, _ := connection.DBConnectionLocal()
+	defer db.Close()
+
+	actualResult := Promote(db, models.Member{MemberID: 10029, Level: 6})
+
+	if actualResult != expectedResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+
+	Demote(db, models.Member{MemberID: 10029, Level: 7})
+}

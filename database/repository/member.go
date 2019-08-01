@@ -71,3 +71,27 @@ func GetMemberData(db *sql.DB, memberID int) models.Member {
 	}
 	return member
 }
+
+func Promote(db *sql.DB, member models.Member) bool {
+	statement, err := db.Prepare(`UPDATE members SET level = ? WHERE id = ?`)
+	if err != nil {
+		return false
+	}
+	_, err = statement.Exec(member.Level+1, member.MemberID)
+	if err != nil {
+		return false
+	}
+	return true
+}
+
+func Demote(db *sql.DB, member models.Member) bool {
+	statement, err := db.Prepare(`UPDATE members SET level = ? WHERE id = ?`)
+	if err != nil {
+		return false
+	}
+	_, err = statement.Exec(member.Level-1, member.MemberID)
+	if err != nil {
+		return false
+	}
+	return true
+}
