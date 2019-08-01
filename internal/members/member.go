@@ -56,8 +56,12 @@ func FindMember(db *sql.DB, memberID int) models.Member {
 	var member models.Member
 	member = repository.GetMemberData(db, memberID)
 	member.MyPoint = repository.GetMyPoint(db, memberID)
-	member.MonthlyPoint = repository.GetMonthlyPoint(db, memberID,int(time.Now().Month()),time.Now().Year())
+	member.MonthlyPoint = repository.GetMonthlyPoint(db, memberID, int(time.Now().Month()), time.Now().Year())
 	member.TeamPoint = repository.GetTeamPoint(db, memberID)
 	member.TeamMember = repository.CountTeamMember(db, memberID)
 	return member
+}
+
+func VerifyLevel(memberID int) bool {
+	return true
 }

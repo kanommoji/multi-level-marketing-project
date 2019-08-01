@@ -1,9 +1,9 @@
 package members
 
 import (
-	"testing"
-	"multi-level-marketing-project/models"
 	connection "multi-level-marketing-project/database/db"
+	"multi-level-marketing-project/models"
+	"testing"
 )
 
 func Test_CheckCondition_By_Level_PearlPup_MyPoint_620_Should_be_True(t *testing.T) {
