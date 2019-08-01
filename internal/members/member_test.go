@@ -150,3 +150,48 @@ func Test_CheckCondition_By_Level_6_MonthlyPoint_370_TeamPoint_15020_TeamMember_
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
 	}
 }
+
+func Test_CheckCondition_By_Level_11_MonthlyPoint_2050_TeamPoint_200300_Should_be_True(t *testing.T) {
+	expectedResult := true
+	member := Member{
+		Level:        11,
+		MonthlyPoint: 2050,
+		TeamPoint:    200300,
+	}
+
+	actualResult := CheckCondition(member)
+
+	if actualResult != expectedResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CheckCondition_By_Level_11_MonthlyPoint_2000_TeamPoint_200000_Should_be_False(t *testing.T) {
+	expectedResult := false
+	member := Member{
+		Level:        11,
+		MonthlyPoint: 2000,
+		TeamPoint:    200000,
+	}
+
+	actualResult := CheckCondition(member)
+
+	if actualResult != expectedResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CheckCondition_By_Level_11_MonthlyPoint_2050_TeamPoint_200050_Should_be_True(t *testing.T) {
+	expectedResult := false
+	member := Member{
+		Level:        11,
+		MonthlyPoint: 2050,
+		TeamPoint:    150050,
+	}
+
+	actualResult := CheckCondition(member)
+
+	if actualResult != expectedResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
