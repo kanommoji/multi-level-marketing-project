@@ -16,3 +16,8 @@ type TeamMember struct {
 	HigherEmerald int
 	HigherRuby    int
 }
+
+type newUserPoint struct {
+	UserRefferal int
+	NewPoint     int
+}
