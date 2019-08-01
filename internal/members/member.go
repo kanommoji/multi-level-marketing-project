@@ -1,7 +1,10 @@
 package members
 
 const (
+	levelPearlPup     = 1
 	levelEmeraldAlpha = 6
+
+	conditionMyPointOfPearlJuvenile = 600
 
 	conditionMonthlyPointOfRubyPup = 400
 
@@ -11,6 +14,10 @@ const (
 )
 
 func CheckCondition(member Member) bool {
+	if member.Level == levelPearlPup &&
+		member.MyPoint > conditionMyPointOfPearlJuvenile {
+		return true
+	}
 	if member.Level == levelEmeraldAlpha &&
 		member.MonthlyPoint >= conditionMonthlyPointOfRubyPup &&
 		member.TeamPoint > conditionTeamPointOfRubyPup &&
