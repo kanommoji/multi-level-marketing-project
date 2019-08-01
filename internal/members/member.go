@@ -17,7 +17,11 @@ type TeamMember struct {
 	HigherRuby    int
 }
 
-type newUserPoint struct {
-	UserRefferal int
-	NewPoint     int
+type NewUserPoint struct {
+	UserRefferal int `json:"user_referral"`
+	NewPoint     int `json:"new_point"`
+}
+
+func VerifyLevel(MemberID int) bool {
+	return true
 }
