@@ -57,3 +57,20 @@ func Test_GetTeamPoint_By_MemberID_10029_Should_be_TeamPoint_20000(t *testing.T)
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
 	}
 }
+
+func Test_GetMemberData_By_MemberID_10029_Should_be_Member(t *testing.T) {
+	expectedResult := members.Member{
+		MemberID:10029,
+		MemberName:"ชนา",
+		LeaderID:20029,
+		Level:6,
+	}
+
+	db, _ := DBConnection()
+	defer db.Close()
+	actualResult := GetMemberData(db, 10029)
+
+	if actualResult != expectedResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}

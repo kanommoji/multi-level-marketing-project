@@ -52,3 +52,22 @@ func GetTeamPoint(db *sql.DB, memberID int) int {
 	row.Scan(&teamPoint)
 	return teamPoint
 }
+
+func GetMemberData(db *sql.DB, memberID int) members.Member {
+	var member members.Member
+	statement, err := db.Prepare(`SELECT * FROM members WHERE id = ?`)
+	if err != nil {
+		return member
+	}
+	row := statement.QueryRow(memberID)
+	err = row.Scan(
+		&member.MemberID,
+		&member.MemberName,
+		&member.LeaderID,
+		&member.Level,
+	)
+	if err != nil {
+		panic(err.Error())
+	}
+	return member
+}
