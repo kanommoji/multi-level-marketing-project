@@ -26,7 +26,7 @@ func AddPoint(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error Record point unsuccess", http.StatusBadRequest)
 		return
 	} else {
-		members.VerifyLevel(newUserPoint.UserRefferal)
+		members.VerifyLevel(db, newUserPoint.UserRefferal)
 	}
 }
 

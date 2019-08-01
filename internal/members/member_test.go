@@ -2,6 +2,7 @@ package members
 
 import (
 	connection "multi-level-marketing-project/database/db"
+	"multi-level-marketing-project/database/repository"
 	"multi-level-marketing-project/models"
 	"testing"
 )
@@ -222,4 +223,18 @@ func Test_FindMember_By_MemberID_10029_Should_be_Member(t *testing.T) {
 	if actualResult != expectedResult {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
 	}
+}
+
+func Test_VerifyLevel_By_MemberID_30001_Should_be_True(t *testing.T) {
+	expectedResult := true
+
+	db, _ := connection.DBConnectionLocal()
+	defer db.Close()
+	actualResult := VerifyLevel(db, 30001)
+
+	if actualResult != expectedResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+
+	repository.Demote(db, models.Member{MemberID: 30001, Level: 7})
 }

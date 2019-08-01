@@ -62,6 +62,10 @@ func FindMember(db *sql.DB, memberID int) models.Member {
 	return member
 }
 
-func VerifyLevel(memberID int) bool {
-	return true
+func VerifyLevel(db *sql.DB, memberID int) bool {
+	member := FindMember(db, memberID)
+	if CheckCondition(member) {
+		return repository.Promote(db, member)
+	}
+	return false
 }
