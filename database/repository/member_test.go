@@ -45,3 +45,15 @@ func Test_CountTeamMember_By_MemberID_10029_Should_be_TeamMember_HigherPeal_2_Hi
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
 	}
 }
+
+func Test_GetTeamPoint_By_MemberID_10029_Should_be_TeamPoint_20000(t *testing.T) {
+	expectedResult := 20000
+
+	db, _ := DBConnection()
+	defer db.Close()
+	actualResult := GetTeamPoint(db, 10029)
+
+	if actualResult != expectedResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}

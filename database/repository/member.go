@@ -41,3 +41,14 @@ func CountTeamMember(db *sql.DB, memberID int) members.TeamMember {
 	rowCountHigherRuby.Scan(&teamMember.HigherRuby)
 	return teamMember
 }
+
+func GetTeamPoint(db *sql.DB, memberID int) int {
+	statement, err := db.Prepare(`SELECT SUM(point) FROM point_records INNER JOIN members ON members.id = point_records.member_id WHERE members.leader_id = ? OR members.id = ?`)
+	if err != nil {
+		return 0
+	}
+	row := statement.QueryRow(memberID, memberID)
+	var teamPoint int
+	row.Scan(&teamPoint)
+	return teamPoint
+}
