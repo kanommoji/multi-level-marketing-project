@@ -49,3 +49,22 @@ func Test_GetMyPoint_By_Member_Id_10029_Should_Be_1000(t *testing.T) {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
 	}
 }
+
+func Test_GetTeamPoint_By_Member_10029_Should_Be_TeamPoint_20000(t *testing.T) {
+	expectedResult := 20000
+	memberID := 10029
+	config := config.Config{
+		Username: "root",
+		Password: "root",
+		Host:     "127.0.0.1",
+		Database: "mlm",
+		Port:     "3306",
+	}
+	database, _ := database.DBConnect(config.GetURI())
+
+	actualResult := GetTeamPoint(database, memberID)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}

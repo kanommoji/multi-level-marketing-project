@@ -34,3 +34,14 @@ func getMyPoint(database *sql.DB, memberID int) int {
 	}
 	return myPoint
 }
+
+func GetTeamPoint(database *sql.DB, memberID int) int {
+	var teamPoint int
+	statement, err := database.Prepare(`SELECT SUM(point) FROM point_records INNER JOIN members ON members.id = point_records.member_id WHERE leader_id = ? OR member_id = ?`)
+	if err != nil {
+		return teamPoint
+	}
+	row := statement.QueryRow(memberID, memberID)
+	row.Scan(&teamPoint)
+	return teamPoint
+}
