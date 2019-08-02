@@ -10,11 +10,11 @@ import (
 )
 
 type Config struct {
-	Username string `json:"username" yamal: "username"`
-	Password string `json:"password" yamal: "password"`
-	Database string `json:"database" yamal: "database"`
-	Host     string `json:"host" yamal: "host"`
-	Port     string `json:"port" yamal: "port"`
+	Username string `yamal: "username"`
+	Password string `yamal: "password"`
+	Database string `yamal: "database"`
+	Host     string ` yamal: "host"`
+	Port     string `yamal: "port"`
 }
 
 func (config Config) GetURI() string {
