@@ -21,6 +21,20 @@ func FindMemberByID(database *sql.DB, memberID int) model.Member {
 	return member
 }
 
+func getMyPoint(database *sql.DB, memberID int) int {
+	var myPoint int
+	statement, err := database.Prepare(`SELECT SUM(point) AS my_point FROM point_records WHERE member_id = ?`)
+	if err != nil {
+		return 0
+	}
+	row := statement.QueryRow(memberID)
+	row.Scan(&myPoint)
+	if err != nil {
+		return 0
+	}
+	return myPoint
+}
+
 func GetTeamPoint(database *sql.DB, memberID int) int {
 	var teamPoint int
 	statement, err := database.Prepare(`SELECT SUM(point) FROM point_records INNER JOIN members ON members.id = point_records.member_id WHERE leader_id = ? OR member_id = ?`)
@@ -41,4 +55,22 @@ func GetMonthlyPoint(database *sql.DB, memberID int, month int, year int) int {
 	row := statement.QueryRow(memberID, month, year)
 	row.Scan(&monthlyPoint)
 	return monthlyPoint
+}
+
+func CountTeamMember(database *sql.DB, memberID int) model.TeamMember {
+	var teamMember model.TeamMember
+	statement, err := database.Prepare(`SELECT COUNT(id) FROM members WHERE leader_id = ? AND level >= ?`)
+	if err != nil {
+		return teamMember
+	}
+	rowTeamMemberHigherPearl := statement.QueryRow(memberID, 1)
+	rowTeamMemberHigherPearl.Scan(&teamMember.HigherPearl)
+
+	rowTeamMemberHigherEmerald := statement.QueryRow(memberID, 4)
+	rowTeamMemberHigherEmerald.Scan(&teamMember.HigherEmerald)
+
+	rowTeamMemberHigherRuby := statement.QueryRow(memberID, 7)
+	rowTeamMemberHigherRuby.Scan(&teamMember.HigherRuby)
+
+	return teamMember
 }

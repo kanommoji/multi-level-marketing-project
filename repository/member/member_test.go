@@ -31,6 +31,25 @@ func Test_FindMemberByID_By_Member_10029_Should_Be_MemberName_ชนา_LeaderID
 	}
 }
 
+func Test_GetMyPoint_By_Member_Id_10029_Should_Be_1000(t *testing.T) {
+	expectedResult := 1000
+	memberID := 10029
+	config := config.Config{
+		Username: "root",
+		Password: "root",
+		Host:     "127.0.0.1",
+		Database: "mlm",
+		Port:     "3306",
+	}
+	database, _ := database.DBConnect(config.GetURI())
+
+	actualResult := getMyPoint(database, memberID)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
 func Test_GetTeamPoint_By_Member_10029_Should_Be_TeamPoint_20000(t *testing.T) {
 	expectedResult := 20000
 	memberID := 10029
@@ -65,6 +84,28 @@ func Test_GetMonthlyPoint_By_Member_10029_Month_7_Year_2019_Should_Be_MonthlyPoi
 	database, _ := database.DBConnect(config.GetURI())
 
 	actualResult := GetMonthlyPoint(database, memberID, month, year)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CountTeamMember_By_Member_10029_Should_Be_TeamMember_HigherPearl_2_HigherEmerald_2(t *testing.T) {
+	expectedResult := model.TeamMember{
+		HigherPearl:   2,
+		HigherEmerald: 2,
+	}
+	memberID := 10029
+	config := config.Config{
+		Username: "root",
+		Password: "root",
+		Host:     "127.0.0.1",
+		Database: "mlm",
+		Port:     "3306",
+	}
+	database, _ := database.DBConnect(config.GetURI())
+
+	actualResult := CountTeamMember(database, memberID)
 
 	if expectedResult != actualResult {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
