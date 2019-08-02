@@ -56,3 +56,21 @@ func GetMonthlyPoint(database *sql.DB, memberID int, month int, year int) int {
 	row.Scan(&monthlyPoint)
 	return monthlyPoint
 }
+
+func CountTeamMember(database *sql.DB, memberID int) model.TeamMember {
+	var teamMember model.TeamMember
+	statement, err := database.Prepare(`SELECT COUNT(id) FROM members WHERE leader_id = ? AND level >= ?`)
+	if err != nil {
+		return teamMember
+	}
+	rowTeamMemberHigherPearl := statement.QueryRow(memberID, 1)
+	rowTeamMemberHigherPearl.Scan(&teamMember.HigherPearl)
+
+	rowTeamMemberHigherEmerald := statement.QueryRow(memberID, 4)
+	rowTeamMemberHigherEmerald.Scan(&teamMember.HigherEmerald)
+
+	rowTeamMemberHigherRuby := statement.QueryRow(memberID, 7)
+	rowTeamMemberHigherRuby.Scan(&teamMember.HigherRuby)
+
+	return teamMember
+}

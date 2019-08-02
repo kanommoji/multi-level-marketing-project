@@ -40,15 +40,20 @@ Example : `"ADD : สร้างไฟล์ README.md และเพิ่ม
         }
     }
     
-## เตรียมฐานข้อมูล
-(MariaDB 10.2)
+## คำสั่งในการทดสอบ
 
-ตั้งค่าที่อยู่ Database ที่ไฟล์ 
-**database/db/database.go**
 
-และนำไฟล์ **database/sql/prepared-data.sql** ลงฐานข้อมูล
+Unittest
 
-    $mysql -u root -p root mlm < database/sql/prepared-data.sql
+    $ mysql -uroot -proot mlm < sql/prepared-data.sql
+    $ go test ./...
+    $ mysql -uroot -proot mlm < sql/drop-mlm-database.sql
+    
+ATTD
+
+    $ mysql -uroot -proot mlm < sql/prepared-data.sql
+    $ newman run atdd/api/promote-member-level.json
+    $ mysql -uroot -proot mlm < sql/drop-mlm-database.sql
 
 
 ## วิธีการใช้งาน API
