@@ -29,3 +29,18 @@ func Test_GetMember_By_MemberID_10029_Should_Get_Member(t *testing.T) {
 		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
 	}
 }
+
+func Test_Decode_Action_From_RequestBody_Should_Get_Struct_Action(t *testing.T) {
+	expectedResult := model.NewUserPoint{
+		NewPoint: 50, UserReferral: 10029,
+	}
+	requestBody := `{"user_referral":10029,"new_point":50}`
+	request := httptest.NewRequest("POST", "/new_user_point", bytes.NewReader([]byte(requestBody)))
+
+	actualResult, _ := decodeNewUserPoint(request)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
+	}
+
+}
