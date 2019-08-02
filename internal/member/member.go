@@ -1,15 +1,17 @@
 package member
 
-import "multi-level-marketing-project/model"
+import (
+	"database/sql"
+	"multi-level-marketing-project/model"
+	repository "multi-level-marketing-project/repository/member"
+	"time"
+)
 
-func FindMember(memberID int) model.Member {
-	return model.Member{
-		MemberID:     10029,
-		MemberName:   "ชนา",
-		LeaderID:     20029,
-		Level:        6,
-		MyPoint:      1000,
-		MonthlyPoint: 350,
-		TeamPoint:    20000,
-	}
+func FindMember(database *sql.DB, memberID int) model.Member {
+	member := repository.FindMemberByID(database, memberID)
+	member.MyPoint = repository.GetMyPoint(database, memberID)
+	member.MonthlyPoint = repository.GetMonthlyPoint(database, memberID, int(time.Now().Month()), time.Now().Year())
+	member.TeamPoint = repository.GetTeamPoint(database, memberID)
+	member.TeamMember = repository.CountTeamMember(database, memberID)
+	return member
 }

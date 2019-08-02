@@ -21,7 +21,7 @@ func FindMemberByID(database *sql.DB, memberID int) model.Member {
 	return member
 }
 
-func getMyPoint(database *sql.DB, memberID int) int {
+func GetMyPoint(database *sql.DB, memberID int) int {
 	var myPoint int
 	statement, err := database.Prepare(`SELECT SUM(point) AS my_point FROM point_records WHERE member_id = ?`)
 	if err != nil {

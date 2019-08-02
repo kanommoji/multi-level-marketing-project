@@ -10,11 +10,11 @@ import (
 )
 
 type Config struct {
-	Username string `yamal: "username"`
-	Password string `yamal: "password"`
-	Database string `yamal: "database"`
-	Host     string `yamal: "host"`
-	Port     string `yamal: "port"`
+	Username string `json:"username" yamal: "username"`
+	Password string `json:"password" yamal: "password"`
+	Database string `json:"database" yamal: "database"`
+	Host     string `json:"host" yamal: "host"`
+	Port     string `json:"port" yamal: "port"`
 }
 
 func (config Config) GetURI() string {
@@ -26,7 +26,7 @@ func SetupConfig() (Config, error) {
 	if os.Getenv("ENV") != "" {
 		environment = os.Getenv("ENV")
 	}
-	configFile, err := ioutil.ReadFile(fmt.Sprintf("config/%s.yml", environment))
+	configFile, err := ioutil.ReadFile(fmt.Sprintf(`config/%s.yml`, environment))
 	if err != nil {
 		fmt.Printf("cannot read config file %s", err)
 		return config, err

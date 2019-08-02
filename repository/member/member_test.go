@@ -43,7 +43,7 @@ func Test_GetMyPoint_By_Member_Id_10029_Should_Be_1000(t *testing.T) {
 	}
 	database, _ := database.DBConnect(config.GetURI())
 
-	actualResult := getMyPoint(database, memberID)
+	actualResult := GetMyPoint(database, memberID)
 
 	if expectedResult != actualResult {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
