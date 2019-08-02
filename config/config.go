@@ -4,14 +4,24 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
-	"multi-level-marketing-project/model"
 	"os"
 
 	"gopkg.in/yaml.v2"
 )
 
-func SetupConfig() (model.Config, error) {
-	var config model.Config
+type Config struct {
+	Username string `yamal: "username"`
+	Password string `yamal: "password"`
+	Database string `yamal: "database"`
+	Host     string `yamal: "host"`
+	Port     string `yamal: "port"`
+}
+
+func (config Config) GetURI() string {
+	return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", config.Username, config.Password, config.Host, config.Port, config.Database)
+}
+func SetupConfig() (Config, error) {
+	var config Config
 	environment := "development"
 	if os.Getenv("ENV") != "" {
 		environment = os.Getenv("ENV")
