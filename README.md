@@ -97,3 +97,6 @@ Method : POST
 | my_point | คะแนนของสมาชิก |
 | monthly_point | คะแนนสะสมผลงานรายเดือน |
 | team_point | คะแนนของทีม |
+
+## คำสั่งตั้งค่า Config 
+    $ export USERNAME=root PASSWORD=root DATABASE=mlm HOST=127.0.0.1 PORT=3306
