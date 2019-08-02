@@ -1,4 +1,4 @@
-package models
+package model
 
 type NewUserPoint struct {
 	UserRefferal int `json:"user_referral"`

@@ -1,4 +1,4 @@
-package models
+package model
 
 type Member struct {
 	MemberID     int

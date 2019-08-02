@@ -1,4 +1,4 @@
-package models
+package model
 
 type Config struct {
 	Username string `yamal: "username"`
