@@ -39,7 +39,7 @@ func CheckCondition(member model.Member) bool {
 func VerifyLevel(database *sql.DB, memberID int) bool {
 	member := FindMember(database, memberID)
 	if CheckCondition(member) {
-		return true
+		return Promote(database, memberID)
 	}
 	return false
 }
