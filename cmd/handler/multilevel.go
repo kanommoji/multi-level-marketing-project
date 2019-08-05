@@ -18,15 +18,14 @@ type DatabaseConnection struct {
 	SQLDatabase *sql.DB
 }
 
-func (database DatabaseConnection) GetMember(writer http.ResponseWriter, request *http.Request) {
-
+func (databaseConnection DatabaseConnection) GetMember(writer http.ResponseWriter, request *http.Request) {
 	vars := mux.Vars(request)
 	memberID, err := strconv.Atoi(vars["memberID"])
 	if err != nil {
 		http.Error(writer, err.Error(), http.StatusBadRequest)
 		return
 	}
-	member := member.FindMember(database.SQLDatabase, memberID)
+	member := member.FindMember(databaseConnection.SQLDatabase, memberID)
 	encode := json.NewEncoder(writer)
 	err = encode.Encode(&member)
 	if err != nil {
@@ -35,9 +34,9 @@ func (database DatabaseConnection) GetMember(writer http.ResponseWriter, request
 	}
 }
 
-func decodeNewUserPoint(r *http.Request) (model.NewUserPoint, error) {
+func decodeNewUserPoint(request *http.Request) (model.NewUserPoint, error) {
 	var newUserPoint model.NewUserPoint
-	body, err := ioutil.ReadAll(r.Body)
+	body, err := ioutil.ReadAll(request.Body)
 	if err != nil {
 		return newUserPoint, err
 	}
@@ -49,16 +48,15 @@ func decodeNewUserPoint(r *http.Request) (model.NewUserPoint, error) {
 	return newUserPoint, nil
 }
 
-func (database DatabaseConnection) AddPoint(writer http.ResponseWriter, request *http.Request) {
+func (databaseConnection DatabaseConnection) AddPoint(writer http.ResponseWriter, request *http.Request) {
 	newUserPoint, err := decodeNewUserPoint(request)
 	if err != nil {
 		http.Error(writer, err.Error(), http.StatusBadRequest)
 		return
 	}
-	if point.RecordPoint(database.SQLDatabase, newUserPoint) == false {
+	if !point.RecordPoint(databaseConnection.SQLDatabase, newUserPoint) {
 		http.Error(writer, err.Error(), http.StatusBadRequest)
 		return
-	} else {
-		member.VerifyLevel(database.SQLDatabase, newUserPoint.UserReferral)
 	}
+	member.VerifyLevel(databaseConnection.SQLDatabase, newUserPoint.UserReferral)
 }
