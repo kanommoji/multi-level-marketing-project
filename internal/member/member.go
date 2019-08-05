@@ -35,3 +35,7 @@ func CheckCondition(member model.Member) bool {
 	}
 	return false
 }
+
+func VerifyLevel(database *sql.DB, memberID int) bool {
+	return true
+}
