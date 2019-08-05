@@ -45,16 +45,16 @@ Example : `"ADD : สร้างไฟล์ README.md และเพิ่ม
 
 ## Unit Test ,  Intergration Test
 
-    $ mysql -uroot -proot mlm < sql/prepared-data.sql
+    $  mysql -uroot -proot < sql/drop-mlm-database.sql
     $ TIME=20190701 go test ./...
-    $ mysql -uroot -proot mlm < sql/drop-mlm-database.sql
+    $ mysql -uroot -proot < sql/drop-mlm-database.sql
     
 ## ATTD
-
+    
     $ TIME=20190701 go run cmd/main/main.go
-    $ mysql -uroot -proot mlm < sql/prepared-data.sql
+    $ mysql -uroot -proot < sql/prepared-data.sql
     $ newman run atdd/api/promote-member-level.json
-    $ mysql -uroot -proot mlm < sql/drop-mlm-database.sql
+    $ mysql -uroot -proot < sql/drop-mlm-database.sql
 
 
 ## วิธีการใช้งาน API
