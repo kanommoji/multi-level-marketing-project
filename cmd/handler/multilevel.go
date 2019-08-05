@@ -2,10 +2,9 @@ package handler
 
 import (
 	"bytes"
+	"database/sql"
 	"encoding/json"
 	"io/ioutil"
-	"multi-level-marketing-project/config"
-	"multi-level-marketing-project/database"
 	"multi-level-marketing-project/internal/member"
 	"multi-level-marketing-project/model"
 	"net/http"
@@ -14,15 +13,11 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func GetMember(writer http.ResponseWriter, request *http.Request) {
-	config := config.Config{
-		Username: "root",
-		Password: "root",
-		Host:     "127.0.0.1",
-		Database: "mlm",
-		Port:     "3306",
-	}
-	database, err := database.DBConnect(config.GetURI())
+type DatabaseConnection struct {
+	SQLDatabase *sql.DB
+}
+
+func (database DatabaseConnection) GetMember(writer http.ResponseWriter, request *http.Request) {
 
 	vars := mux.Vars(request)
 	memberID, err := strconv.Atoi(vars["memberID"])
@@ -30,7 +25,7 @@ func GetMember(writer http.ResponseWriter, request *http.Request) {
 		http.Error(writer, err.Error(), http.StatusBadRequest)
 		return
 	}
-	member := member.FindMember(database, memberID)
+	member := member.FindMember(database.SQLDatabase, memberID)
 	encode := json.NewEncoder(writer)
 	err = encode.Encode(&member)
 	if err != nil {

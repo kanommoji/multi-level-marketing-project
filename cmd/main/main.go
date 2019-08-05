@@ -1,14 +1,23 @@
 package main
 
 import (
-	"github.com/gorilla/mux"
 	"log"
 	"multi-level-marketing-project/cmd/handler"
+	"multi-level-marketing-project/config"
+	"multi-level-marketing-project/database"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func main() {
+	config, _ := config.SetupConfig()
+	db, _ := database.DBConnect(config.GetURI())
+	multilevelHandler := handler.DatabaseConnection{
+		SQLDatabase: db,
+	}
+
 	router := mux.NewRouter()
-	router.HandleFunc("/members/{memberID}", handler.GetMember).Methods("GET")
+	router.HandleFunc("/members/{memberID}", multilevelHandler.GetMember).Methods("GET")
 	log.Fatal(http.ListenAndServe(":8080", router))
 }

@@ -3,6 +3,8 @@ package handler
 import (
 	"bytes"
 	"encoding/json"
+	"multi-level-marketing-project/config"
+	"multi-level-marketing-project/database"
 	"multi-level-marketing-project/model"
 	"net/http/httptest"
 	"testing"
@@ -21,7 +23,19 @@ func Test_GetMember_By_MemberID_10029_Should_Get_Member(t *testing.T) {
 	})
 	request.Header.Set("Content-type", "application/json")
 	writer := httptest.NewRecorder()
-	GetMember(writer, request)
+
+	configURI := config.Config{
+		Username: "root",
+		Password: "root",
+		Host:     "127.0.0.1",
+		Database: "mlm",
+		Port:     "3306",
+	}
+	db, _ := database.DBConnect(configURI.GetURI())
+	multilevelHandler := DatabaseConnection{
+		SQLDatabase: db,
+	}
+	multilevelHandler.GetMember(writer, request)
 
 	decodeActualResult := json.NewDecoder(writer.Body)
 	_ = decodeActualResult.Decode(&actualResult)
