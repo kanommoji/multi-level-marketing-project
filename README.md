@@ -43,13 +43,13 @@ Example : `"ADD : สร้างไฟล์ README.md และเพิ่ม
 ## คำสั่งในการทดสอบ
 
 
-### Unittest
+## Unit Test ,  Intergration Test
 
     $ mysql -uroot -proot mlm < sql/prepared-data.sql
     $ TIME=20190701 go test ./...
     $ mysql -uroot -proot mlm < sql/drop-mlm-database.sql
     
-### ATTD
+## ATTD
 
     $ TIME=20190701 go run cmd/main/main.go
     $ mysql -uroot -proot mlm < sql/prepared-data.sql
