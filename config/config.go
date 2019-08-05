@@ -4,7 +4,9 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
+	"time"
 
 	"gopkg.in/yaml.v2"
 )
@@ -52,4 +54,18 @@ func SetupConfig() (Config, error) {
 		config.Host = os.Getenv("HOST_DB")
 	}
 	return config, nil
+}
+
+func TimeNow() time.Time {
+	//format YYYYMMDD eg. (20190701)
+	dateLayout := "20060102"
+	dateText := os.Getenv("TIME")
+	if dateText != "" {
+		timeNow, err := time.Parse(dateLayout, dateText)
+		if err != nil {
+			log.Printf("error pasing date from env , %s", err)
+		}
+		return timeNow
+	}
+	return time.Now()
 }
