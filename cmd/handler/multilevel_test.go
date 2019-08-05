@@ -25,7 +25,6 @@ func Test_GetMember_By_MemberID_10029_Should_Get_Member(t *testing.T) {
 	})
 	request.Header.Set("Content-type", "application/json")
 	writer := httptest.NewRecorder()
-
 	configURI := config.Config{
 		Username: "root",
 		Password: "root",
@@ -33,12 +32,12 @@ func Test_GetMember_By_MemberID_10029_Should_Get_Member(t *testing.T) {
 		Database: "mlm",
 		Port:     "3306",
 	}
-	db, _ := database.DBConnect(configURI.GetURI())
+	databaseConnection, _ := database.DBConnect(configURI.GetURI())
 	multilevelHandler := DatabaseConnection{
-		SQLDatabase: db,
+		SQLDatabase: databaseConnection,
 	}
-	multilevelHandler.GetMember(writer, request)
 
+	multilevelHandler.GetMember(writer, request)
 	decodeActualResult := json.NewDecoder(writer.Body)
 	_ = decodeActualResult.Decode(&actualResult)
 
@@ -49,7 +48,8 @@ func Test_GetMember_By_MemberID_10029_Should_Get_Member(t *testing.T) {
 
 func Test_Decode_Action_From_RequestBody_Should_Get_Struct_Action(t *testing.T) {
 	expectedResult := model.NewUserPoint{
-		NewPoint: 50, UserReferral: 10029,
+		NewPoint:     50,
+		UserReferral: 10029,
 	}
 	requestBody := `{"user_referral":10029,"new_point":50}`
 	request := httptest.NewRequest("POST", "/new_user_point", bytes.NewReader([]byte(requestBody)))
@@ -59,15 +59,12 @@ func Test_Decode_Action_From_RequestBody_Should_Get_Struct_Action(t *testing.T) 
 	if expectedResult != actualResult {
 		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
 	}
-
 }
 
 func Test_AddPoint_By_UserReferral_10029_NewPoint_50_Should_Get_StatusOK(t *testing.T) {
 	expectedResult := http.StatusOK
-
 	request := httptest.NewRequest("POST", "/new_user_point", strings.NewReader(`{"user_referral":10029,"new_point":50}`))
 	writer := httptest.NewRecorder()
-
 	configURI := config.Config{
 		Username: "root",
 		Password: "root",
@@ -75,11 +72,12 @@ func Test_AddPoint_By_UserReferral_10029_NewPoint_50_Should_Get_StatusOK(t *test
 		Database: "mlm",
 		Port:     "3306",
 	}
-	db, _ := database.DBConnect(configURI.GetURI())
+	databaseConnection, _ := database.DBConnect(configURI.GetURI())
 	multilevelHandler := DatabaseConnection{
-		SQLDatabase: db,
+		SQLDatabase: databaseConnection,
 	}
 	multilevelHandler.AddPoint(writer, request)
+
 	actualResult := writer.Code
 
 	if expectedResult != actualResult {
