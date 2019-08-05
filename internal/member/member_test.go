@@ -37,3 +37,22 @@ func Test_FindMember_By_MemberID_10029_Should_Be_MemberName_ชนา_LeaderID_2
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
 	}
 }
+
+func Test_CheckCondition_By_MemberID_10029_Level_6_MonthlyPoint_350_Month_7_Year_2019_TeamPoint_20000_TeamMember_HigherEmerald_2_Should_Be_True(t *testing.T) {
+	expectedResult := true
+	member := model.Member{
+		MemberID:     10029,
+		Level:        6,
+		TeamPoint:    20050,
+		MonthlyPoint: 400,
+		TeamMember: model.TeamMember{
+			HigherEmerald: 2,
+		},
+	}
+
+	actualResult := CheckCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
