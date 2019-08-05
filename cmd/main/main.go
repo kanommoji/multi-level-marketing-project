@@ -18,6 +18,7 @@ func main() {
 	}
 
 	router := mux.NewRouter()
+	router.HandleFunc("/new_user_point", multilevelHandler.AddPoint).Methods("POST")
 	router.HandleFunc("/members/{memberID}", multilevelHandler.GetMember).Methods("GET")
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
