@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Promote member ID 10029 Level Emerald Alpha (Lv.6) to Ruby Pub (Lv.7) success",
+			"name": "Promote member ID 10029 Level Emerald Alpha (Lv.6) to Ruby Pup (Lv.7) success",
 			"item": [
 				{
 					"name": "Member ID 10029 is ชนา Emerald Alpha (Lv.6)",
@@ -167,7 +167,7 @@
 			]
 		},
 		{
-			"name": "Promote member ID 10033 Level Emerald Alpha (Lv.6) to Ruby Pub (Lv.7) unsuccess",
+			"name": "Promote member ID 10033 Level Emerald Alpha (Lv.6) to Ruby Pup (Lv.7) unsuccess",
 			"item": [
 				{
 					"name": "Member ID 10033 is ดานิกา Emerald Alpha (Lv.6)",
@@ -611,6 +611,328 @@
 							"path": [
 								"members",
 								"10002"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Promote member ID 10009 Level Pearl Alpha (Lv.3) to Emerald Pup (Lv.4) success",
+			"item": [
+				{
+					"name": "Member ID 10009 is เอมเบอร์ Pearl Alpha (Lv.3)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cc9872c4-f43d-4be6-880d-d912367613b9",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be เอมเบอร์\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"เอมเบอร์\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 3\", function () {",
+									"    pm.expect(jsonData.level).to.eql(3);",
+									"});",
+									"",
+									"pm.test(\"My point is 1000\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(1000);",
+									"});",
+									"",
+									"pm.test(\"Team point is 4000\", function () {",
+									"    pm.expect(jsonData.team_point).to.eql(4000);",
+									"});",
+									"",
+									"pm.test(\"Monthly point is 100\", function () {",
+									"    pm.expect(jsonData.monthly_point).to.eql(100);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/members/10009",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"10009"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new user point 20 to member ID 10009",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d2234471-96e8-4335-9eb6-fa64d9df6f82",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user_referral\":10009,\n\t\"new_point\":20\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/new_user_point",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"new_user_point"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Member ID 10009 should get promoted to Emerald Pup (Lv.4)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a6d696b-8ca4-48e7-9b8c-5fcf6cd1dc60",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be เอมเบอร์\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"เอมเบอร์\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 4\", function () {",
+									"    pm.expect(jsonData.level).to.eql(4);",
+									"});",
+									"",
+									"pm.test(\"My point is 1020\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(1020);",
+									"});",
+									"",
+									"pm.test(\"Team point is 4020\", function () {",
+									"    pm.expect(jsonData.team_point).to.eql(4020);",
+									"});",
+									"",
+									"pm.test(\"Monthly point is 120\", function () {",
+									"    pm.expect(jsonData.monthly_point).to.eql(120);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/members/10009",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"10009"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Promote member ID 10011 Level Pearl Alpha (Lv.3) to Emerald Pup (Lv.4) unsuccess",
+			"item": [
+				{
+					"name": "Member ID 10011 is เอมี่ Pearl Alpha (Lv.3)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cc9872c4-f43d-4be6-880d-d912367613b9",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be เอมี่\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"เอมี่\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 3\", function () {",
+									"    pm.expect(jsonData.level).to.eql(3);",
+									"});",
+									"",
+									"pm.test(\"My point is 1000\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(1000);",
+									"});",
+									"",
+									"pm.test(\"Team point is 3500\", function () {",
+									"    pm.expect(jsonData.team_point).to.eql(3500);",
+									"});",
+									"",
+									"pm.test(\"Monthly point is 50\", function () {",
+									"    pm.expect(jsonData.monthly_point).to.eql(50);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/members/10011",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"10011"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new user point 50 to member ID 10011",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d2234471-96e8-4335-9eb6-fa64d9df6f82",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user_referral\":10011,\n\t\"new_point\":50\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/new_user_point",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"new_user_point"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Member ID 10011 should be Emerald Pup (Lv.4)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a6d696b-8ca4-48e7-9b8c-5fcf6cd1dc60",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be เอมี่\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"เอมี่\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 3\", function () {",
+									"    pm.expect(jsonData.level).to.eql(3);",
+									"});",
+									"",
+									"pm.test(\"My point is 1050\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(1050);",
+									"});",
+									"",
+									"pm.test(\"Team point is 3550\", function () {",
+									"    pm.expect(jsonData.team_point).to.eql(3550);",
+									"});",
+									"",
+									"pm.test(\"Monthly point is 100\", function () {",
+									"    pm.expect(jsonData.monthly_point).to.eql(100);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/members/10011",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"10011"
 							]
 						}
 					},
