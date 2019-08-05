@@ -61,7 +61,13 @@ Example : `"ADD : สร้างไฟล์ README.md และเพิ่ม
 เริ่มต้น Start main
 
     $ go build cmd/main/main.go
-    $ ./main.exe -http=8080
+    $ ./main.exe
+    
+หรือ
+
+    $ go run cmd/main/main.go
+    
+    
 
 URL : https://localhost:8080/action_point
 Method : POST
