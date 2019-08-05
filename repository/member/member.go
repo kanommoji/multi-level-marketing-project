@@ -74,3 +74,15 @@ func CountTeamMember(database *sql.DB, memberID int) model.TeamMember {
 
 	return teamMember
 }
+
+func UpdateLevelPlusOne(database *sql.DB, memberID int) bool {
+	statement, err := database.Prepare(`UPDATE members SET level = level + 1 WHERE id = ?`)
+	if err != nil {
+		return false
+	}
+	_, err = statement.Exec(memberID)
+	if err != nil {
+		return false
+	}
+	return true
+}
