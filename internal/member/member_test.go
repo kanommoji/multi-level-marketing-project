@@ -15,7 +15,7 @@ func Test_FindMember_By_MemberID_10029_Should_Be_MemberName_ชนา_LeaderID_2
 		Level:        6,
 		TeamPoint:    20000,
 		MyPoint:      1000,
-		MonthlyPoint: 0,
+		MonthlyPoint: 350,
 		TeamMember: model.TeamMember{
 			HigherPearl:   2,
 			HigherEmerald: 2,
@@ -57,9 +57,9 @@ func Test_CheckCondition_By_MemberID_10029_Level_6_MonthlyPoint_350_Month_7_Year
 	}
 }
 
-func Test_VerifyLevel_By_UserReferral_10029_Should_Be_True(t *testing.T) {
+func Test_VerifyLevel_By_UserReferral_30001_Should_Be_True(t *testing.T) {
 	expectedResult := true
-	memberID := 10029
+	memberID := 30001
 	config := config.Config{
 		Username: "root",
 		Password: "root",
