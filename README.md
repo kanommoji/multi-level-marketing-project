@@ -46,7 +46,7 @@ Example : `"ADD : สร้างไฟล์ README.md และเพิ่ม
 ### Unittest
 
     $ mysql -uroot -proot mlm < sql/prepared-data.sql
-    $ go test ./...
+    $ TIME=20190701 go test ./...
     $ mysql -uroot -proot mlm < sql/drop-mlm-database.sql
     
 ### ATTD
