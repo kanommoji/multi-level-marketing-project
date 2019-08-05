@@ -37,5 +37,16 @@ func CheckCondition(member model.Member) bool {
 }
 
 func VerifyLevel(database *sql.DB, memberID int) bool {
+	member := FindMember(database, memberID)
+	if CheckCondition(member) {
+		return Promote(database, memberID)
+	}
+	return false
+}
+
+func Promote(database *sql.DB, memberID int) bool {
+	if !repository.UpdateLevelPlusOne(database, memberID) {
+		return false
+	}
 	return true
 }

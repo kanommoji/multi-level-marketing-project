@@ -111,3 +111,22 @@ func Test_CountTeamMember_By_Member_10029_Should_Be_TeamMember_HigherPearl_2_Hig
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
 	}
 }
+
+func Test_UpdateLevelPlusOne_By_MemberID_30001_Should_Be_True(t *testing.T) {
+	expectedResult := true
+	memberID := 30001
+	config := config.Config{
+		Username: "root",
+		Password: "root",
+		Host:     "127.0.0.1",
+		Database: "mlm",
+		Port:     "3306",
+	}
+	database, _ := database.DBConnect(config.GetURI())
+
+	actualResult := UpdateLevelPlusOne(database, memberID)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
