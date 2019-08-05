@@ -120,6 +120,36 @@ func Test_CheckCondition_By_Level_6_MonthlyPoint_350_TeamPoint_20000_TeamMember_
 	}
 }
 
+func Test_CheckCondition_By_Level_11_MonthlyPoint_2050_TeamPoint_200300_Should_Be_True(t *testing.T) {
+	expectedResult := true
+	member := model.Member{
+		Level:        11,
+		TeamPoint:    200300,
+		MonthlyPoint: 2050,
+	}
+
+	actualResult := CheckCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CheckCondition_By_Level_11_MonthlyPoint_2030_TeamPoint_200000_Should_Be_False(t *testing.T) {
+	expectedResult := false
+	member := model.Member{
+		Level:        11,
+		TeamPoint:    200000,
+		MonthlyPoint: 2030,
+	}
+
+	actualResult := CheckCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
 func Test_VerifyLevel_By_UserReferral_30001_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	memberID := 30001
