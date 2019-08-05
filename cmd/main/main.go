@@ -11,10 +11,16 @@ import (
 )
 
 func main() {
-	config, _ := config.SetupConfig()
-	db, _ := database.DBConnect(config.GetURI())
+	databaseConfig, err := config.SetupConfig()
+	if err != nil {
+		log.Fatalf("Setup config error %s", err.Error())
+	}
+	databaseConnection, err := database.DBConnect(databaseConfig.GetURI())
+	if err != nil {
+		log.Fatalf("Database connect failed %s", err.Error())
+	}
 	multilevelHandler := handler.DatabaseConnection{
-		SQLDatabase: db,
+		SQLDatabase: databaseConnection,
 	}
 
 	router := mux.NewRouter()
