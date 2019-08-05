@@ -18,6 +18,8 @@
 --
 -- Table structure for table `members`
 --
+CREATE DATABASE IF NOT EXISTS `mlm`;
+USE `mlm`;
 
 DROP TABLE IF EXISTS `members`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
