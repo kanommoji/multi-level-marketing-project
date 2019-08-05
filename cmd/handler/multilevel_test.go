@@ -6,7 +6,9 @@ import (
 	"multi-level-marketing-project/config"
 	"multi-level-marketing-project/database"
 	"multi-level-marketing-project/model"
+	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 
 	"github.com/gorilla/mux"
@@ -58,4 +60,29 @@ func Test_Decode_Action_From_RequestBody_Should_Get_Struct_Action(t *testing.T) 
 		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
 	}
 
+}
+
+func Test_AddPoint_By_UserReferral_10029_NewPoint_50_Should_Get_StatusOK(t *testing.T) {
+	expectedResult := http.StatusOK
+
+	request := httptest.NewRequest("POST", "/new_user_point", strings.NewReader(`{"user_referral":10029,"new_point":50}`))
+	writer := httptest.NewRecorder()
+
+	configURI := config.Config{
+		Username: "root",
+		Password: "root",
+		Host:     "127.0.0.1",
+		Database: "mlm",
+		Port:     "3306",
+	}
+	db, _ := database.DBConnect(configURI.GetURI())
+	multilevelHandler := DatabaseConnection{
+		SQLDatabase: db,
+	}
+	multilevelHandler.AddPoint(writer, request)
+	actualResult := writer.Code
+
+	if expectedResult != actualResult {
+		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
+	}
 }

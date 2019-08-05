@@ -15,3 +15,7 @@ func FindMember(database *sql.DB, memberID int) model.Member {
 	member.TeamMember = repository.CountTeamMember(database, memberID)
 	return member
 }
+
+func VerifyLevel(database *sql.DB, memberID int) bool {
+	return true
+}
