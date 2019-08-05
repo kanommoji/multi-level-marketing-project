@@ -75,3 +75,22 @@ func Test_VerifyLevel_By_UserReferral_30001_Should_Be_True(t *testing.T) {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
 	}
 }
+
+func Test_Promote_By_MemberID_30001_Should_Be_True(t *testing.T) {
+	expectedResult := true
+	memberID := 30001
+	config := config.Config{
+		Username: "root",
+		Password: "root",
+		Host:     "127.0.0.1",
+		Database: "mlm",
+		Port:     "3306",
+	}
+	database, _ := database.DBConnect(config.GetURI())
+
+	actualResult := Promote(database, memberID)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}

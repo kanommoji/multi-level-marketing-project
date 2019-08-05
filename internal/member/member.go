@@ -43,3 +43,10 @@ func VerifyLevel(database *sql.DB, memberID int) bool {
 	}
 	return false
 }
+
+func Promote(database *sql.DB, memberID int) bool {
+	if !repository.UpdateLevelPlusOne(database, memberID) {
+		return false
+	}
+	return true
+}
