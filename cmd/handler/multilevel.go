@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"multi-level-marketing-project/internal/member"
+	"multi-level-marketing-project/internal/point"
 	"multi-level-marketing-project/model"
 	"net/http"
 	"strconv"
@@ -46,4 +47,18 @@ func decodeNewUserPoint(r *http.Request) (model.NewUserPoint, error) {
 		return newUserPoint, err
 	}
 	return newUserPoint, nil
+}
+
+func (database DatabaseConnection) AddPoint(writer http.ResponseWriter, request *http.Request) {
+	newUserPoint, err := decodeNewUserPoint(request)
+	if err != nil {
+		http.Error(writer, err.Error(), http.StatusBadRequest)
+		return
+	}
+	if point.RecordPoint(database.SQLDatabase, newUserPoint) == false {
+		http.Error(writer, err.Error(), http.StatusBadRequest)
+		return
+	} else {
+		member.VerifyLevel(database.SQLDatabase, newUserPoint.UserReferral)
+	}
 }
