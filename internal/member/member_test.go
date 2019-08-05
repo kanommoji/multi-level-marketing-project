@@ -41,9 +41,8 @@ func Test_FindMember_By_MemberID_10029_Should_Be_MemberName_ชนา_LeaderID_2
 func Test_CheckCondition_By_MemberID_10001_Level_1_MyPoint_620_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	member := model.Member{
-		MemberID: 10001,
-		Level:    1,
-		MyPoint:  620,
+		Level:   1,
+		MyPoint: 620,
 	}
 
 	actualResult := CheckCondition(member)
@@ -53,12 +52,11 @@ func Test_CheckCondition_By_MemberID_10001_Level_1_MyPoint_620_Should_Be_True(t 
 	}
 }
 
-func Test_CheckCondition_By_MemberID_10002_Level_1_MyPoint_500_Should_Be_False(t *testing.T) {
+func Test_CheckCondition_By_Level_1_MyPoint_500_Should_Be_False(t *testing.T) {
 	expectedResult := false
 	member := model.Member{
-		MemberID: 10002,
-		Level:    1,
-		MyPoint:  500,
+		Level:   1,
+		MyPoint: 500,
 	}
 
 	actualResult := CheckCondition(member)
@@ -68,10 +66,45 @@ func Test_CheckCondition_By_MemberID_10002_Level_1_MyPoint_500_Should_Be_False(t
 	}
 }
 
-func Test_CheckCondition_By_MemberID_10029_Level_6_MonthlyPoint_350_Month_7_Year_2019_TeamPoint_20000_TeamMember_HigherEmerald_2_Should_Be_True(t *testing.T) {
+func Test_CheckCondition_By_Level_3_MonthlyPoint_120_TeamPoint_4020_TeamMember_HigherPearl_2_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	member := model.Member{
-		MemberID:     10029,
+		Level:        3,
+		TeamPoint:    4020,
+		MonthlyPoint: 120,
+		TeamMember: model.TeamMember{
+			HigherPearl: 2,
+		},
+	}
+
+	actualResult := CheckCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CheckCondition_By_Level_3_MonthlyPoint_100_TeamPoint_3550_TeamMember_HigherPearl_2_Should_Be_False(t *testing.T) {
+	expectedResult := false
+	member := model.Member{
+		Level:        3,
+		TeamPoint:    3550,
+		MonthlyPoint: 100,
+		TeamMember: model.TeamMember{
+			HigherPearl: 2,
+		},
+	}
+
+	actualResult := CheckCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CheckCondition_By_Level_6_MonthlyPoint_350_TeamPoint_20000_TeamMember_HigherEmerald_2_Should_Be_True(t *testing.T) {
+	expectedResult := true
+	member := model.Member{
 		Level:        6,
 		TeamPoint:    20050,
 		MonthlyPoint: 400,
