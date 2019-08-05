@@ -45,7 +45,7 @@ Example : `"ADD : สร้างไฟล์ README.md และเพิ่ม
 
 ## Unit Test ,  Intergration Test
 
-    $  mysql -uroot -proot < sql/drop-mlm-database.sql
+    $ mysql -uroot -proot < sql/prepared-data.sql
     $ TIME=20190701 go test ./...
     $ mysql -uroot -proot < sql/drop-mlm-database.sql
     
