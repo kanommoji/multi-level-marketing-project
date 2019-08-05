@@ -21,6 +21,7 @@ func Test_Insert_By_UserReferral_99999_NewPoint_50_Should_Be_True(t *testing.T) 
 		UserReferral: 99999,
 		NewPoint:     50,
 	}
+
 	actualResult := Insert(database, newUserPoint)
 
 	if expectedResult != actualResult {
