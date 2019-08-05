@@ -13,7 +13,7 @@ type Config struct {
 	Username string `yamal: "username"`
 	Password string `yamal: "password"`
 	Database string `yamal: "database"`
-	Host     string ` yamal: "host"`
+	Host     string `yamal: "host"`
 	Port     string `yamal: "port"`
 }
 
@@ -36,20 +36,20 @@ func SetupConfig() (Config, error) {
 		fmt.Printf("cannot decode config file %s", err)
 		return config, err
 	}
-	if os.Getenv("PORT") != "" {
-		config.Port = os.Getenv("PORT")
+	if os.Getenv("PORT_DB") != "" {
+		config.Port = os.Getenv("PORT_DB")
 	}
-	if os.Getenv("USERNAME") != "" {
-		config.Username = os.Getenv("USERNAME")
+	if os.Getenv("USERNAME_DB") != "" {
+		config.Username = os.Getenv("USERNAME_DB")
 	}
-	if os.Getenv("PASSWORD") != "" {
-		config.Password = os.Getenv("PASSWORD")
+	if os.Getenv("PASSWORD_DB") != "" {
+		config.Password = os.Getenv("PASSWORD_DB")
 	}
-	if os.Getenv("DATABASE") != "" {
-		config.Database = os.Getenv("DATABASE")
+	if os.Getenv("DATABASE_NAME") != "" {
+		config.Database = os.Getenv("DATABASE_NAME")
 	}
-	if os.Getenv("HOST") != "" {
-		config.Host = os.Getenv("HOST")
+	if os.Getenv("HOST_DB") != "" {
+		config.Host = os.Getenv("HOST_DB")
 	}
 	return config, nil
 }
