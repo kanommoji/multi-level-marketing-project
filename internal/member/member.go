@@ -10,7 +10,7 @@ import (
 const (
 	levelPearlPup            = 1
 	levelPearlAlpha          = 3
-	levelEmeralAlpha         = 6
+	levelEmeraldAlpha        = 6
 	levelBlueDiamondJuvenile = 11
 
 	conditionMyPointOfPearlJuvenile = 600
@@ -37,7 +37,8 @@ func FindMember(database *sql.DB, memberID int) model.Member {
 }
 
 func CheckCondition(member model.Member) bool {
-	if member.Level == levelPearlPup && member.MyPoint > conditionMyPointOfPearlJuvenile {
+	if member.Level == levelPearlPup &&
+		member.MyPoint > conditionMyPointOfPearlJuvenile {
 		return true
 	}
 	if member.Level == levelPearlAlpha &&
@@ -46,7 +47,7 @@ func CheckCondition(member model.Member) bool {
 		member.TeamMember.HigherPearl >= conditionTeamMemberHigherPearl {
 		return true
 	}
-	if member.Level == levelEmeralAlpha &&
+	if member.Level == levelEmeraldAlpha &&
 		member.MonthlyPoint >= conditionMonthlyPointOfRubyPup &&
 		member.TeamPoint > conditionTeamPointOfRubyPup &&
 		member.TeamMember.HigherEmerald >= conditionTeamMemberHigherEmerald {
@@ -69,8 +70,5 @@ func VerifyLevel(database *sql.DB, memberID int) bool {
 }
 
 func Promote(database *sql.DB, memberID int) bool {
-	if !repository.UpdateLevelPlusOne(database, memberID) {
-		return false
-	}
-	return true
+	return repository.UpdateLevelPlusOne(database, memberID)
 }
