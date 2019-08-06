@@ -10,8 +10,8 @@ import (
 func Test_RecordPoint_By_MemberID_99999_Point_50_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	config := config.Config{
-		Username: "root",
-		Password: "root",
+		Username: "mlm_dev",
+		Password: "mlm_dev",
 		Host:     "127.0.0.1",
 		Database: "mlm",
 		Port:     "3306",
@@ -32,8 +32,8 @@ func Test_RecordPoint_By_MemberID_99999_Point_50_Should_Be_True(t *testing.T) {
 func Test_RecordPoint_By_MemberID_00000_Point_50_Should_Be_False(t *testing.T) {
 	expectedResult := false
 	config := config.Config{
-		Username: "root",
-		Password: "root",
+		Username: "mlm_dev",
+		Password: "mlm_dev",
 		Host:     "127.0.0.1",
 		Database: "mlm",
 		Port:     "3306",
