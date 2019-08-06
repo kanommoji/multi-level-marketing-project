@@ -2140,7 +2140,7 @@
 					"response": []
 				},
 				{
-					"name": "Member ID 10033 should be Emerald Alpha (Lv.6)",
+					"name": "Member ID 10041 should be Emerald Alpha (Lv.7)",
 					"event": [
 						{
 							"listen": "test",
@@ -2157,8 +2157,8 @@
 									"    pm.expect(jsonData.member_name).to.eql(\"กาย\");",
 									"});",
 									"",
-									"pm.test(\"Level should be 6\", function () {",
-									"    pm.expect(jsonData.level).to.eql(6);",
+									"pm.test(\"Level should be 7\", function () {",
+									"    pm.expect(jsonData.level).to.eql(7);",
 									"});",
 									"",
 									"pm.test(\"My point is 1050\", function () {",
@@ -2181,7 +2181,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/members/10033",
+							"raw": "http://localhost:8080/members/10041",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -2189,7 +2189,7 @@
 							"port": "8080",
 							"path": [
 								"members",
-								"10033"
+								"10041"
 							]
 						}
 					},
