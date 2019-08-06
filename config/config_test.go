@@ -22,8 +22,8 @@ func Test_GetURI_Should_Be_Username_mlm_dev_Password_mlm_dev_Host_127_0_0_1_Port
 	}
 }
 
-func Test_TimeNow_Shout_Be_Date_Year_2019_Month_7_Day_2(t *testing.T) {
-	expectedResult := time.Date(2019, 7, 2, 0, 0, 0, 0, time.UTC)
+func Test_TimeNow_Shout_Be_Date_Year_2019_Month_7_Day_1(t *testing.T) {
+	expectedResult := time.Date(2019, 7, 1, 0, 0, 0, 0, time.UTC)
 
 	actualResult := TimeNow()
 
