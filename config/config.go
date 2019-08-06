@@ -30,12 +30,12 @@ func SetupConfig() (Config, error) {
 	}
 	configFile, err := ioutil.ReadFile(fmt.Sprintf(`config/%s.yml`, environment))
 	if err != nil {
-		fmt.Printf("cannot read config file %s", err)
+		fmt.Printf("Cannot read config file %s", err)
 		return config, err
 	}
 	err = yaml.NewDecoder(bytes.NewReader(configFile)).Decode(&config)
 	if err != nil {
-		fmt.Printf("cannot decode config file %s", err)
+		fmt.Printf("Cannot decode config file %s", err)
 		return config, err
 	}
 	if os.Getenv("PORT_DB") != "" {
@@ -57,13 +57,12 @@ func SetupConfig() (Config, error) {
 }
 
 func TimeNow() time.Time {
-	//format YYYYMMDD eg. (20190701)
 	dateLayout := "20060102"
 	dateText := os.Getenv("TIME")
 	if dateText != "" {
 		timeNow, err := time.Parse(dateLayout, dateText)
 		if err != nil {
-			log.Printf("error pasing date from env , %s", err)
+			log.Printf("Error pasing date from env , %s", err)
 		}
 		return timeNow
 	}
