@@ -66,6 +66,34 @@ func Test_CheckCondition_By_Member_Level_PearlPup_MyPoint_500_Should_Be_False(t 
 	}
 }
 
+func Test_CheckCondition_By_Member_Level_PearlJuvenile_MyPoint_1020_Should_Be_True(t *testing.T) {
+	expectedResult := true
+	member := model.Member{
+		Level:   2,
+		MyPoint: 1020,
+	}
+
+	actualResult := CheckCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CheckCondition_By_Member_Level_PearlJuvenile_MyPoint_570_Should_Be_False(t *testing.T) {
+	expectedResult := false
+	member := model.Member{
+		Level:   2,
+		MyPoint: 570,
+	}
+
+	actualResult := CheckCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
 func Test_CheckCondition_By_Level_PearlAlpha_MonthlyPoint_120_TeamPoint_4020_TeamMember_HigherPearl_2_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	member := model.Member{

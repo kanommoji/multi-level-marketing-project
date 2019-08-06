@@ -9,11 +9,13 @@ import (
 
 const (
 	levelPearlPup            = 1
+	levelPearlJuvenile       = 2
 	levelPearlAlpha          = 3
 	levelEmeraldAlpha        = 6
 	levelBlueDiamondJuvenile = 11
 
 	conditionMyPointOfPearlJuvenile = 600
+	conditionMyPointOfPearlAlpha    = 1000
 
 	conditionMonthlyPointOfEmeraldPup       = 100
 	conditionMonthlyPointOfRubyPup          = 400
@@ -39,6 +41,10 @@ func FindMember(database *sql.DB, memberID int) model.Member {
 func CheckCondition(member model.Member) bool {
 	if member.Level == levelPearlPup &&
 		member.MyPoint > conditionMyPointOfPearlJuvenile {
+		return true
+	}
+	if member.Level == levelPearlJuvenile &&
+		member.MyPoint > conditionMyPointOfPearlAlpha {
 		return true
 	}
 	if member.Level == levelPearlAlpha &&
