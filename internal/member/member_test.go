@@ -38,7 +38,7 @@ func Test_FindMember_By_MemberID_10029_Should_Be_MemberName_ชนา_LeaderID_2
 	}
 }
 
-func Test_CheckCondition_By_MemberID_10001_Level_1_MyPoint_620_Should_Be_True(t *testing.T) {
+func Test_CheckCondition_By_Member_Level_PearlPup_MyPoint_620_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	member := model.Member{
 		Level:   1,
@@ -52,7 +52,7 @@ func Test_CheckCondition_By_MemberID_10001_Level_1_MyPoint_620_Should_Be_True(t 
 	}
 }
 
-func Test_CheckCondition_By_Level_1_MyPoint_500_Should_Be_False(t *testing.T) {
+func Test_CheckCondition_By_Member_Level_PearlPup_MyPoint_500_Should_Be_False(t *testing.T) {
 	expectedResult := false
 	member := model.Member{
 		Level:   1,
@@ -66,7 +66,7 @@ func Test_CheckCondition_By_Level_1_MyPoint_500_Should_Be_False(t *testing.T) {
 	}
 }
 
-func Test_CheckCondition_By_Level_3_MonthlyPoint_120_TeamPoint_4020_TeamMember_HigherPearl_2_Should_Be_True(t *testing.T) {
+func Test_CheckCondition_By_Level_PearlAlpha_MonthlyPoint_120_TeamPoint_4020_TeamMember_HigherPearl_2_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	member := model.Member{
 		Level:        3,
@@ -84,7 +84,7 @@ func Test_CheckCondition_By_Level_3_MonthlyPoint_120_TeamPoint_4020_TeamMember_H
 	}
 }
 
-func Test_CheckCondition_By_Level_3_MonthlyPoint_100_TeamPoint_3550_TeamMember_HigherPearl_2_Should_Be_False(t *testing.T) {
+func Test_CheckCondition_By_Level_PearlAlpha_MonthlyPoint_100_TeamPoint_3550_TeamMember_HigherPearl_2_Should_Be_False(t *testing.T) {
 	expectedResult := false
 	member := model.Member{
 		Level:        3,
@@ -102,7 +102,7 @@ func Test_CheckCondition_By_Level_3_MonthlyPoint_100_TeamPoint_3550_TeamMember_H
 	}
 }
 
-func Test_CheckCondition_By_Level_6_MonthlyPoint_350_TeamPoint_20000_TeamMember_HigherEmerald_2_Should_Be_True(t *testing.T) {
+func Test_CheckCondition_By_Level_EmeraldAlpha_MonthlyPoint_350_TeamPoint_20000_TeamMember_HigherEmerald_2_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	member := model.Member{
 		Level:        6,
@@ -120,7 +120,7 @@ func Test_CheckCondition_By_Level_6_MonthlyPoint_350_TeamPoint_20000_TeamMember_
 	}
 }
 
-func Test_CheckCondition_By_Level_11_MonthlyPoint_2050_TeamPoint_200300_Should_Be_True(t *testing.T) {
+func Test_CheckCondition_By_Level_BlueDiamondJuvenile_MonthlyPoint_2050_TeamPoint_200300_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	member := model.Member{
 		Level:        11,
@@ -135,7 +135,7 @@ func Test_CheckCondition_By_Level_11_MonthlyPoint_2050_TeamPoint_200300_Should_B
 	}
 }
 
-func Test_CheckCondition_By_Level_11_MonthlyPoint_2030_TeamPoint_200000_Should_Be_False(t *testing.T) {
+func Test_CheckCondition_By_Level_BlueDiamondJuvenile_MonthlyPoint_2030_TeamPoint_200000_Should_Be_False(t *testing.T) {
 	expectedResult := false
 	member := model.Member{
 		Level:        11,
@@ -150,7 +150,7 @@ func Test_CheckCondition_By_Level_11_MonthlyPoint_2030_TeamPoint_200000_Should_B
 	}
 }
 
-func Test_VerifyLevel_By_UserReferral_30001_Should_Be_True(t *testing.T) {
+func Test_VerifyLevel_By_MemberID_30001_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	memberID := 30001
 	config := config.Config{
