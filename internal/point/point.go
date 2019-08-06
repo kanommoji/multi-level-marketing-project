@@ -7,8 +7,5 @@ import (
 )
 
 func RecordPoint(database *sql.DB, newUserPoint model.NewUserPoint) bool {
-	if !repository.Insert(database, newUserPoint) {
-		return false
-	}
-	return true
+	return repository.Insert(database, newUserPoint)
 }
