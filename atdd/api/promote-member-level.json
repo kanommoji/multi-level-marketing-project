@@ -1876,6 +1876,328 @@
 			]
 		},
 		{
+			"name": "Promote member ID 10037 Level Ruby Pup (Lv.7) to Ruby Juvenile (Lv.8) success",
+			"item": [
+				{
+					"name": "Member ID 10037 is ฟิน Ruby Pup (Lv.7)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cc9872c4-f43d-4be6-880d-d912367613b9",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be ฟิน\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"ฟิน\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 7\", function () {",
+									"    pm.expect(jsonData.level).to.eql(7);",
+									"});",
+									"",
+									"pm.test(\"My point is 1000\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(1000);",
+									"});",
+									"",
+									"pm.test(\"Team point is 40000\", function () {",
+									"    pm.expect(jsonData.team_point).to.eql(40000);",
+									"});",
+									"",
+									"pm.test(\"Monthly point is 550\", function () {",
+									"    pm.expect(jsonData.monthly_point).to.eql(550);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/members/10037",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"10037"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new user point 50 to member ID 10037",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d2234471-96e8-4335-9eb6-fa64d9df6f82",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user_referral\":10037,\n\t\"new_point\":50\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/new_user_point",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"new_user_point"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Member ID 10037 should get promoted to Ruby Juvenile (Lv.8)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a6d696b-8ca4-48e7-9b8c-5fcf6cd1dc60",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be ฟิน\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"ฟิน\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 8\", function () {",
+									"    pm.expect(jsonData.level).to.eql(8);",
+									"});",
+									"",
+									"pm.test(\"My point is 1050\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(1050);",
+									"});",
+									"",
+									"pm.test(\"Team point is 40050\", function () {",
+									"    pm.expect(jsonData.team_point).to.eql(40050);",
+									"});",
+									"",
+									"pm.test(\"Monthly point is 600\", function () {",
+									"    pm.expect(jsonData.monthly_point).to.eql(600);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/members/10037",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"10037"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Promote member ID 10041 Level Ruby Pup (Lv.7) to Ruby Juvenile (Lv.8) unsuccess",
+			"item": [
+				{
+					"name": "Member ID 10041 is กาย Ruby Pup (Lv.7)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cc9872c4-f43d-4be6-880d-d912367613b9",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be กาย\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"กาย\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 7\", function () {",
+									"    pm.expect(jsonData.level).to.eql(7);",
+									"});",
+									"",
+									"pm.test(\"My point is 1000\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(1000);",
+									"});",
+									"",
+									"pm.test(\"Team point is 30000\", function () {",
+									"    pm.expect(jsonData.team_point).to.eql(30000);",
+									"});",
+									"",
+									"pm.test(\"Monthly point is 550\", function () {",
+									"    pm.expect(jsonData.monthly_point).to.eql(550);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/members/10041",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"10041"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new user point 50 to member ID 10041",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d2234471-96e8-4335-9eb6-fa64d9df6f82",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user_referral\":10041,\n\t\"new_point\":50\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/new_user_point",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"new_user_point"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Member ID 10033 should be Emerald Alpha (Lv.6)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a6d696b-8ca4-48e7-9b8c-5fcf6cd1dc60",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be กาย\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"กาย\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 6\", function () {",
+									"    pm.expect(jsonData.level).to.eql(6);",
+									"});",
+									"",
+									"pm.test(\"My point is 1050\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(1050);",
+									"});",
+									"",
+									"pm.test(\"Team point is 30050\", function () {",
+									"    pm.expect(jsonData.team_point).to.eql(30050);",
+									"});",
+									"",
+									"pm.test(\"Monthly point is 600\", function () {",
+									"    pm.expect(jsonData.monthly_point).to.eql(600);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/members/10033",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"10033"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Promote member ID 10066 Level Blue Diamond Juvenile (Lv.11) to Blue Diamond Alpha (Lv.12) success",
 			"item": [
 				{
