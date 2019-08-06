@@ -130,6 +130,35 @@ func Test_CheckCondition_By_Level_PearlAlpha_MonthlyPoint_100_TeamPoint_3550_Tea
 	}
 }
 
+func Test_CheckCondition_By_Level_EmeraldPup_MonthlyPoint_160_TeamPoint_8030_Should_Be_True(t *testing.T) {
+	expectedResult := true
+	member := model.Member{
+		Level:        4,
+		TeamPoint:    8030,
+		MonthlyPoint: 160,
+	}
+
+	actualResult := CheckCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CheckCondition_By_Level_EmeraldPup_MonthlyPoint_150_TeamPoint_7520_Should_Be_False(t *testing.T) {
+	expectedResult := false
+	member := model.Member{
+		Level:        4,
+		TeamPoint:    7520,
+		MonthlyPoint: 150,
+	}
+
+	actualResult := CheckCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
 func Test_CheckCondition_By_Level_EmeraldAlpha_MonthlyPoint_350_TeamPoint_20000_TeamMember_HigherEmerald_2_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	member := model.Member{

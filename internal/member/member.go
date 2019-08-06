@@ -11,6 +11,7 @@ const (
 	levelPearlPup            = 1
 	levelPearlJuvenile       = 2
 	levelPearlAlpha          = 3
+	levelEmeraldPup          = 4
 	levelEmeraldAlpha        = 6
 	levelBlueDiamondJuvenile = 11
 
@@ -18,10 +19,12 @@ const (
 	conditionMyPointOfPearlAlpha    = 1000
 
 	conditionMonthlyPointOfEmeraldPup       = 100
+	conditionMonthlyPointOfEmeraldJuvenile  = 160
 	conditionMonthlyPointOfRubyPup          = 400
 	conditionMonthlyPointOfBlueDiamondAlpha = 2000
 
 	conditionTeamPointOfEmeraldPup       = 4000
+	conditionTeamPointOfEmeraldJuvenile  = 8000
 	conditionTeamPointOfRubyPup          = 20000
 	conditionTeamPointOfBlueDiamondAlpha = 200000
 
@@ -51,6 +54,11 @@ func CheckCondition(member model.Member) bool {
 		member.MonthlyPoint >= conditionMonthlyPointOfEmeraldPup &&
 		member.TeamPoint > conditionTeamPointOfEmeraldPup &&
 		member.TeamMember.HigherPearl >= conditionTeamMemberHigherPearl {
+		return true
+	}
+	if member.Level == levelEmeraldPup &&
+		member.MonthlyPoint >= conditionMonthlyPointOfEmeraldJuvenile &&
+		member.TeamPoint > conditionTeamPointOfEmeraldJuvenile {
 		return true
 	}
 	if member.Level == levelEmeraldAlpha &&
