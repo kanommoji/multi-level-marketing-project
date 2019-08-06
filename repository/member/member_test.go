@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func Test_FindMemberByID_By_Member_10029_Should_Be_MemberName_ชนา_LeaderID_20029_Level_6(t *testing.T) {
+func Test_FindMemberByID_By_MemberID_10029_Should_Be_MemberName_ชนา_LeaderID_20029_Level_6(t *testing.T) {
 	expectedResult := model.Member{
 		MemberID:   10029,
 		MemberName: "ชนา",
@@ -31,7 +31,7 @@ func Test_FindMemberByID_By_Member_10029_Should_Be_MemberName_ชนา_LeaderID
 	}
 }
 
-func Test_GetMyPoint_By_Member_Id_10029_Should_Be_1000(t *testing.T) {
+func Test_GetMyPoint_By_MemberID_10029_Should_Be_1000(t *testing.T) {
 	expectedResult := 1000
 	memberID := 10029
 	config := config.Config{
@@ -50,7 +50,7 @@ func Test_GetMyPoint_By_Member_Id_10029_Should_Be_1000(t *testing.T) {
 	}
 }
 
-func Test_GetTeamPoint_By_Member_10029_Should_Be_TeamPoint_20000(t *testing.T) {
+func Test_GetTeamPoint_By_MemberID_10029_Should_Be_20000(t *testing.T) {
 	expectedResult := 20000
 	memberID := 10029
 	config := config.Config{
@@ -69,7 +69,7 @@ func Test_GetTeamPoint_By_Member_10029_Should_Be_TeamPoint_20000(t *testing.T) {
 	}
 }
 
-func Test_GetMonthlyPoint_By_Member_10029_Month_7_Year_2019_Should_Be_MonthlyPoint_350(t *testing.T) {
+func Test_GetMonthlyPoint_By_MemberID_10029_Month_7_Year_2019_Should_Be_350(t *testing.T) {
 	expectedResult := 350
 	memberID := 10029
 	month := 7
@@ -90,7 +90,7 @@ func Test_GetMonthlyPoint_By_Member_10029_Month_7_Year_2019_Should_Be_MonthlyPoi
 	}
 }
 
-func Test_CountTeamMember_By_Member_10029_Should_Be_TeamMember_HigherPearl_2_HigherEmerald_2(t *testing.T) {
+func Test_CountTeamMember_By_MemberID_10029_Should_Be_TeamMember_HigherPearl_2_HigherEmerald_2(t *testing.T) {
 	expectedResult := model.TeamMember{
 		HigherPearl:   2,
 		HigherEmerald: 2,
