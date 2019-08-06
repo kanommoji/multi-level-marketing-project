@@ -45,6 +45,14 @@ Example : `"ADD : สร้างไฟล์ README.md และเพิ่ม
 
     CREATE USER 'mlm_dev'@'localhost' IDENTIFIED BY 'mlm_dev';
     GRANT ALL PRIVILEGES ON *.* TO 'mlm_dev'@'localhost' IDENTIFIED BY 'mlm_dev';
+    
+ค่า Setup Config เกี่ยวกับ Connection ของ database สามารถแก้ไขได้ที่ไฟล์ config/development.yml
+
+หรือสามารถใช้ค่า Environment แทนได้ โดยกำหนดค่าก่อนจะเริ่มรัน main ยกตัวอย่าง
+
+    $ export USERNAME_DB=root PASSWORD_DB=root DATABASE_NAME=mlm HOST_DB=127.0.0.1 PORT_DB=3306
+    $ go build cmd/main/main.go
+    $ ./main.exe
 
 
 
@@ -114,6 +122,3 @@ Method : POST
 | my_point | คะแนนของสมาชิก |
 | monthly_point | คะแนนสะสมผลงานรายเดือน |
 | team_point | คะแนนของทีม |
-
-## คำสั่งตั้งค่า Config 
-    $ export USERNAME=root PASSWORD=root DATABASE=mlm HOST=127.0.0.1 PORT=3306
