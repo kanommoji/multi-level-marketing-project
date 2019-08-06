@@ -12,12 +12,15 @@ func FindMemberByID(database *sql.DB, memberID int) model.Member {
 		return member
 	}
 	row := statement.QueryRow(memberID)
-	row.Scan(
+	err = row.Scan(
 		&member.MemberID,
 		&member.MemberName,
 		&member.LeaderID,
 		&member.Level,
 	)
+	if err != nil {
+		return member
+	}
 	return member
 }
 
@@ -28,7 +31,7 @@ func GetMyPoint(database *sql.DB, memberID int) int {
 		return 0
 	}
 	row := statement.QueryRow(memberID)
-	row.Scan(&myPoint)
+	err = row.Scan(&myPoint)
 	if err != nil {
 		return 0
 	}
@@ -42,7 +45,10 @@ func GetTeamPoint(database *sql.DB, memberID int) int {
 		return 0
 	}
 	row := statement.QueryRow(memberID, memberID)
-	row.Scan(&teamPoint)
+	err = row.Scan(&teamPoint)
+	if err != nil {
+		return 0
+	}
 	return teamPoint
 }
 
@@ -53,7 +59,10 @@ func GetMonthlyPoint(database *sql.DB, memberID int, month int, year int) int {
 		return 0
 	}
 	row := statement.QueryRow(memberID, month, year)
-	row.Scan(&monthlyPoint)
+	err = row.Scan(&monthlyPoint)
+	if err != nil {
+		return 0
+	}
 	return monthlyPoint
 }
 
@@ -64,14 +73,20 @@ func CountTeamMember(database *sql.DB, memberID int) model.TeamMember {
 		return teamMember
 	}
 	rowTeamMemberHigherPearl := statement.QueryRow(memberID, 1)
-	rowTeamMemberHigherPearl.Scan(&teamMember.HigherPearl)
-
+	err = rowTeamMemberHigherPearl.Scan(&teamMember.HigherPearl)
+	if err != nil {
+		return teamMember
+	}
 	rowTeamMemberHigherEmerald := statement.QueryRow(memberID, 4)
-	rowTeamMemberHigherEmerald.Scan(&teamMember.HigherEmerald)
-
+	err = rowTeamMemberHigherEmerald.Scan(&teamMember.HigherEmerald)
+	if err != nil {
+		return teamMember
+	}
 	rowTeamMemberHigherRuby := statement.QueryRow(memberID, 7)
-	rowTeamMemberHigherRuby.Scan(&teamMember.HigherRuby)
-
+	err = rowTeamMemberHigherRuby.Scan(&teamMember.HigherRuby)
+	if err != nil {
+		return teamMember
+	}
 	return teamMember
 }
 
