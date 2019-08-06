@@ -10,8 +10,8 @@ import (
 func Test_Insert_By_UserReferral_99999_NewPoint_50_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	config := config.Config{
-		Username: "root",
-		Password: "root",
+		Username: "mlm_dev",
+		Password: "mlm_dev",
 		Host:     "127.0.0.1",
 		Database: "mlm",
 		Port:     "3306",

@@ -23,8 +23,8 @@ func Test_FindMember_By_MemberID_10029_Should_Be_MemberName_ชนา_LeaderID_2
 	}
 	memberID := 10029
 	config := config.Config{
-		Username: "root",
-		Password: "root",
+		Username: "mlm_dev",
+		Password: "mlm_dev",
 		Host:     "127.0.0.1",
 		Database: "mlm",
 		Port:     "3306",
@@ -182,8 +182,8 @@ func Test_VerifyLevel_By_MemberID_30001_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	memberID := 30001
 	config := config.Config{
-		Username: "root",
-		Password: "root",
+		Username: "mlm_dev",
+		Password: "mlm_dev",
 		Host:     "127.0.0.1",
 		Database: "mlm",
 		Port:     "3306",
@@ -201,8 +201,8 @@ func Test_Promote_By_MemberID_30001_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	memberID := 30001
 	config := config.Config{
-		Username: "root",
-		Password: "root",
+		Username: "mlm_dev",
+		Password: "mlm_dev",
 		Host:     "127.0.0.1",
 		Database: "mlm",
 		Port:     "3306",

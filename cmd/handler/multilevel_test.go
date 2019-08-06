@@ -26,8 +26,8 @@ func Test_GetMember_By_MemberID_10029_Should_Get_Member(t *testing.T) {
 	request.Header.Set("Content-type", "application/json")
 	writer := httptest.NewRecorder()
 	configURI := config.Config{
-		Username: "root",
-		Password: "root",
+		Username: "mlm_dev",
+		Password: "mlm_dev",
 		Host:     "127.0.0.1",
 		Database: "mlm",
 		Port:     "3306",
@@ -66,8 +66,8 @@ func Test_AddPoint_By_UserReferral_10029_NewPoint_50_Should_Get_StatusOK(t *test
 	request := httptest.NewRequest("POST", "/new_user_point", strings.NewReader(`{"user_referral":10029,"new_point":50}`))
 	writer := httptest.NewRecorder()
 	configURI := config.Config{
-		Username: "root",
-		Password: "root",
+		Username: "mlm_dev",
+		Password: "mlm_dev",
 		Host:     "127.0.0.1",
 		Database: "mlm",
 		Port:     "3306",

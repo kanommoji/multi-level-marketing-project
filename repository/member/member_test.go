@@ -16,8 +16,8 @@ func Test_FindMemberByID_By_MemberID_10029_Should_Be_MemberName_ชนา_Leader
 	}
 	memberID := 10029
 	config := config.Config{
-		Username: "root",
-		Password: "root",
+		Username: "mlm_dev",
+		Password: "mlm_dev",
 		Host:     "127.0.0.1",
 		Database: "mlm",
 		Port:     "3306",
@@ -35,8 +35,8 @@ func Test_GetMyPoint_By_MemberID_10029_Should_Be_1000(t *testing.T) {
 	expectedResult := 1000
 	memberID := 10029
 	config := config.Config{
-		Username: "root",
-		Password: "root",
+		Username: "mlm_dev",
+		Password: "mlm_dev",
 		Host:     "127.0.0.1",
 		Database: "mlm",
 		Port:     "3306",
@@ -54,8 +54,8 @@ func Test_GetTeamPoint_By_MemberID_10029_Should_Be_20000(t *testing.T) {
 	expectedResult := 20000
 	memberID := 10029
 	config := config.Config{
-		Username: "root",
-		Password: "root",
+		Username: "mlm_dev",
+		Password: "mlm_dev",
 		Host:     "127.0.0.1",
 		Database: "mlm",
 		Port:     "3306",
@@ -75,8 +75,8 @@ func Test_GetMonthlyPoint_By_MemberID_10029_Month_7_Year_2019_Should_Be_350(t *t
 	month := 7
 	year := 2019
 	config := config.Config{
-		Username: "root",
-		Password: "root",
+		Username: "mlm_dev",
+		Password: "mlm_dev",
 		Host:     "127.0.0.1",
 		Database: "mlm",
 		Port:     "3306",
@@ -97,8 +97,8 @@ func Test_CountTeamMember_By_MemberID_10029_Should_Be_TeamMember_HigherPearl_2_H
 	}
 	memberID := 10029
 	config := config.Config{
-		Username: "root",
-		Password: "root",
+		Username: "mlm_dev",
+		Password: "mlm_dev",
 		Host:     "127.0.0.1",
 		Database: "mlm",
 		Port:     "3306",
@@ -116,8 +116,8 @@ func Test_UpdateLevelPlusOne_By_MemberID_30001_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	memberID := 30001
 	config := config.Config{
-		Username: "root",
-		Password: "root",
+		Username: "mlm_dev",
+		Password: "mlm_dev",
 		Host:     "127.0.0.1",
 		Database: "mlm",
 		Port:     "3306",
