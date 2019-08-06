@@ -40,21 +40,26 @@ Example : `"ADD : สร้างไฟล์ README.md และเพิ่ม
         }
     }
     
-## คำสั่งในการทดสอบ
+## Project Setup
+เริ่มต้นสร้าง user ทำหรับ database โดยเข้า mysql ด้วยสิทธิ์ root และมอบสิทธิ์ให้กับ user ที่สร้างโดยคำสั่ง
+
+    CREATE USER 'mlm_dev'@'localhost' IDENTIFIED BY 'mlm_dev';
+    GRANT ALL PRIVILEGES ON *.* TO 'mlm_dev'@'localhost' IDENTIFIED BY 'mlm_dev';
 
 
-## Unit Test ,  Intergration Test
 
-    $ mysql -uroot -proot < sql/prepared-data.sql
+## Unit Test ,  Integration Test
+
+    $ mysql -umlm_dev -pmlm_dev < sql/prepared-data.sql
     $ TIME=20190701 go test ./...
-    $ mysql -uroot -proot < sql/drop-mlm-database.sql
+    $ mysql -umlm_dev -pmlm_dev < sql/drop-mlm-database.sql
     
 ## ATTD
     
     $ TIME=20190701 go run cmd/main/main.go
-    $ mysql -uroot -proot < sql/prepared-data.sql
+    $ mysql -umlm_dev -pmlm_dev < sql/prepared-data.sql
     $ newman run atdd/api/promote-member-level.json
-    $ mysql -uroot -proot < sql/drop-mlm-database.sql
+    $ mysql -umlm_dev -pmlm_dev < sql/drop-mlm-database.sql
 
 
 ## วิธีการใช้งาน API
