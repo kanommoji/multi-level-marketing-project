@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6b8c400b-a163-4e0b-a435-20ab13282ec6",
+		"_postman_id": "f479224d-d603-4d26-bff8-14665241ebf5",
 		"name": "Promote Member Level",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -3160,6 +3160,372 @@
 						}
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "Promote member ID 10059 Level Blue Diamond Pup (Lv.10) to Blue Diamond Juvenile (Lv.11) success",
+			"item": [
+				{
+					"name": "Member ID 10059 is มาริสา Blue Diamond Pup (Lv.10)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cc9872c4-f43d-4be6-880d-d912367613b9",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be มาริสา\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"มาริสา\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 10\", function () {",
+									"    pm.expect(jsonData.level).to.eql(10);",
+									"});",
+									"",
+									"pm.test(\"My point is 5000\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(5000);",
+									"});",
+									"",
+									"pm.test(\"Team point is 160000\", function () {",
+									"    pm.expect(jsonData.team_point).to.eql(160000);",
+									"});",
+									"",
+									"pm.test(\"Monthly point is 1550\", function () {",
+									"    pm.expect(jsonData.monthly_point).to.eql(1550);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/members/10059",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"10059"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new user point 50 to member ID 10059",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d2234471-96e8-4335-9eb6-fa64d9df6f82",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user_referral\":10059,\n\t\"new_point\":50\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/new_user_point",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"new_user_point"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Promote member ID 10059 Level Blue Diamond Pup (Lv.10) to Blue Diamond Juvenile (Lv.11) success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a6d696b-8ca4-48e7-9b8c-5fcf6cd1dc60",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be มาริสา\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"มาริสา\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 11\", function () {",
+									"    pm.expect(jsonData.level).to.eql(11);",
+									"});",
+									"",
+									"pm.test(\"My point is 5050\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(5050);",
+									"});",
+									"",
+									"pm.test(\"Team point is 160050\", function () {",
+									"    pm.expect(jsonData.team_point).to.eql(160050);",
+									"});",
+									"",
+									"pm.test(\"Monthly point is 1600\", function () {",
+									"    pm.expect(jsonData.monthly_point).to.eql(1600);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/members/10059",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"10059"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "858f1688-5a84-46d5-a146-22bd3f0fa8cf",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "019a880b-a3df-4916-b33e-27d68b9de62d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Promote member ID 10063 Level Blue Diamond Pup (Lv.10) to Blue Diamond Juvenile (Lv.11) unsuccess",
+			"item": [
+				{
+					"name": "Member ID 10063 is นานา Blue Diamond Pup (Lv.10)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cc9872c4-f43d-4be6-880d-d912367613b9",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be นานา\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"นานา\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 10\", function () {",
+									"    pm.expect(jsonData.level).to.eql(10);",
+									"});",
+									"",
+									"pm.test(\"My point is 5000\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(5000);",
+									"});",
+									"",
+									"pm.test(\"Team point is 150000\", function () {",
+									"    pm.expect(jsonData.team_point).to.eql(150000);",
+									"});",
+									"",
+									"pm.test(\"Monthly point is 1550\", function () {",
+									"    pm.expect(jsonData.monthly_point).to.eql(1550);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/members/10063",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"10063"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new user point 50 to member ID 10063",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d2234471-96e8-4335-9eb6-fa64d9df6f82",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user_referral\":10063,\n\t\"new_point\":50\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/new_user_point",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"new_user_point"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Member ID 10063 should be Blue Diamond Pup (Lv.10)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a6d696b-8ca4-48e7-9b8c-5fcf6cd1dc60",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be นานา\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"นานา\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 10\", function () {",
+									"    pm.expect(jsonData.level).to.eql(10);",
+									"});",
+									"",
+									"pm.test(\"My point is 5050\", function () {",
+									"    pm.expect(jsonData.my_point).to.eql(5050);",
+									"});",
+									"",
+									"pm.test(\"Team point is 150050\", function () {",
+									"    pm.expect(jsonData.team_point).to.eql(150050);",
+									"});",
+									"",
+									"pm.test(\"Monthly point is 1600\", function () {",
+									"    pm.expect(jsonData.monthly_point).to.eql(1600);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/members/10063",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"10063"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "fef95e88-9149-49f2-843d-6e72462d425a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1126fa86-ef90-49fb-986f-dd5f9096af7d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		}
