@@ -8,7 +8,7 @@ type Member struct {
 	MyPoint      int        `json:"my_point"`
 	MonthlyPoint int        `json:"monthly_point"`
 	TeamPoint    int        `json:"team_point"`
-	TeamMember   TeamMember `json:"-"`
+	TeamMember   TeamMember `json:"team_member"`
 }
 
 type TeamMember struct {
