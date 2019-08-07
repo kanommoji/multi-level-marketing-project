@@ -12,7 +12,7 @@ type Member struct {
 }
 
 type TeamMember struct {
-	HigherPearl   int
-	HigherEmerald int
-	HigherRuby    int
+	HigherPearl   int `json:"higher_pearl"`
+	HigherEmerald int `json:"higher_emerald"`
+	HigherRuby    int `json:"higher_ruby"`
 }
