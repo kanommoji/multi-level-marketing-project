@@ -128,3 +128,7 @@ func VerifyLevel(database *sql.DB, memberID int) bool {
 func Promote(database *sql.DB, memberID int) bool {
 	return repository.UpdateLevelPlusOne(database, memberID)
 }
+
+func VerifyLevelDemote(database *sql.DB, memberID int) bool {
+	return false
+}

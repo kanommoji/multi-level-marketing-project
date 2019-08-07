@@ -74,3 +74,12 @@ func decodeMemberID(request *http.Request) (model.Member, error) {
 	}
 	return member, nil
 }
+
+func (databaseConnection DatabaseConnection) DemoteMember(writer http.ResponseWriter, request *http.Request) {
+	memberDemote, err := decodeMemberID(request)
+	if err != nil {
+		http.Error(writer, err.Error(), http.StatusBadRequest)
+		return
+	}
+	member.VerifyLevelDemote(databaseConnection.SQLDatabase, memberDemote.MemberID)
+}
