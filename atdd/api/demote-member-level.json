@@ -1,0 +1,351 @@
+{
+	"info": {
+		"_postman_id": "91a73260-fe16-4d07-a149-61673ed2e76c",
+		"name": "Demote Member Level",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Demote member ID 40001 Level Emerald Pup (Lv.4) to Pearl Alpha (Lv.3) success",
+			"item": [
+				{
+					"name": "Member ID 40001 is สยาม Emerald Pup (Lv.4)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cc9872c4-f43d-4be6-880d-d912367613b9",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be สยาม\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"สยาม\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 4\", function () {",
+									"    pm.expect(jsonData.level).to.eql(4);",
+									"});",
+									"",
+									"pm.test(\"Monthly point is 70\", function () {",
+									"    pm.expect(jsonData.monthly_point).to.eql(150);",
+									"});",
+									"",
+									"pm.test(\"Team member higher pearl is 2\", function () {",
+									"    pm.expect(jsonData.team_member.higher_pearl).to.eql(2);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/members/40001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"40001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Demote with member ID 40001",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d2234471-96e8-4335-9eb6-fa64d9df6f82",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"member_id\":40001\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/verify_demote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"verify_demote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Member ID 40001 should get demoted Emerald Pup (Lv.4) to Pearl Alpha (Lv.3)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a6d696b-8ca4-48e7-9b8c-5fcf6cd1dc60",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be สยาม\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"สยาม\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 3\", function () {",
+									"    pm.expect(jsonData.level).to.eql(3);",
+									"});",
+									"",
+									"pm.test(\"Team member higher pearl is 2\", function () {",
+									"    pm.expect(jsonData.team_member.higher_pearl).to.eql(2);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/members/40001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"40001"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7fe3d4a3-f4ec-4e11-8f77-80fb946a2f71",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c591efe7-0dce-4905-bcb6-7784f3a196bb",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Demote member ID 40003 Level Emerald Pup (Lv.4) to Pearl Alpha (Lv.3) unsuccess",
+			"item": [
+				{
+					"name": "Member ID 40003 is อารี Emerald Pup (Lv.4)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cc9872c4-f43d-4be6-880d-d912367613b9",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be อารี\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"อารี\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 4\", function () {",
+									"    pm.expect(jsonData.level).to.eql(4);",
+									"});",
+									"",
+									"pm.test(\"Monthly point is 150\", function () {",
+									"    pm.expect(jsonData.monthly_point).to.eql(150);",
+									"});",
+									"",
+									"pm.test(\"Team member higher pearl is 2\", function () {",
+									"    pm.expect(jsonData.team_member.higher_pearl).to.eql(2);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/members/40003",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"40003"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Demote with member ID 40003",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d2234471-96e8-4335-9eb6-fa64d9df6f82",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"member_id\":40003\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/verify_demote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"verify_demote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Member ID 40003 should be Emerald Pup (Lv.4)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a6d696b-8ca4-48e7-9b8c-5fcf6cd1dc60",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name should be อารี\", function () {",
+									"    pm.expect(jsonData.member_name).to.eql(\"อารี\");",
+									"});",
+									"",
+									"pm.test(\"Level should be 4\", function () {",
+									"    pm.expect(jsonData.level).to.eql(4);",
+									"});",
+									"",
+									"pm.test(\"Team member higher pearl is 2\", function () {",
+									"    pm.expect(jsonData.team_member.higher_pearl).to.eql(2);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/members/40003",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"members",
+								"40003"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "84beff80-c294-4d36-aec7-9fa5a5a71ee8",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "17bf2f4c-569e-444d-b366-0c391579614c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
