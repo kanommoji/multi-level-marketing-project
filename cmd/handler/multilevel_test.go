@@ -84,3 +84,17 @@ func Test_AddPoint_By_UserReferral_10029_NewPoint_50_Should_Get_StatusOK(t *test
 		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
 	}
 }
+
+func Test_Decode_MemberID_From_RequestBody_Should_Get_Struct_Member(t *testing.T) {
+	expectedResult := model.Member{
+		MemberID: 40001,
+	}
+	requestBody := `{"member_id":40001}`
+	request := httptest.NewRequest("POST", "/verify_demote", bytes.NewReader([]byte(requestBody)))
+
+	actualResult, _ := decodeMemberID(request)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
+	}
+}

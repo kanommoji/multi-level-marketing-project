@@ -60,3 +60,17 @@ func (databaseConnection DatabaseConnection) AddPoint(writer http.ResponseWriter
 	}
 	member.VerifyLevel(databaseConnection.SQLDatabase, newUserPoint.UserReferral)
 }
+
+func decodeMemberID(request *http.Request) (model.Member, error) {
+	var member model.Member
+	body, err := ioutil.ReadAll(request.Body)
+	if err != nil {
+		return member, err
+	}
+	decode := json.NewDecoder(bytes.NewReader(body))
+	err = decode.Decode(&member)
+	if err != nil {
+		return member, err
+	}
+	return member, nil
+}
