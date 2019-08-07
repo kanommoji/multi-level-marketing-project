@@ -16,7 +16,7 @@ import (
 
 func Test_GetMember_By_MemberID_10029_Should_Get_Member(t *testing.T) {
 	var expectedResult, actualResult model.Member
-	response := `{"member_id":10029,"member_name":"ชนา","leader_id":20029,"level":6,"my_point":1000,"monthly_point":350,"team_point":20000}`
+	response := `{"member_id":10029,"member_name":"ชนา","leader_id":20029,"level":6,"my_point":1000,"monthly_point":350,"team_point":20000,"team_member":{"higher_pearl":2,"higher_emerald":2}}`
 	decodeExpectedResult := json.NewDecoder(bytes.NewReader([]byte(response)))
 	_ = decodeExpectedResult.Decode(&expectedResult)
 	request := httptest.NewRequest("GET", "/members/10029", nil)
