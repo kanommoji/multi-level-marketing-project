@@ -404,6 +404,23 @@ func Test_Promote_By_MemberID_30001_Should_Be_True(t *testing.T) {
 	}
 }
 
+func Test_CheckConditionDemote_By_Level_EmeraldPup_MonthlyPoint_70_TeamMemberHigherPearl_2_Should_Be_True(t *testing.T) {
+	expectedResult := true
+	member := model.Member{
+		Level:        4,
+		MonthlyPoint: 70,
+		TeamMember: model.TeamMember{
+			HigherPearl: 2,
+		},
+	}
+
+	actualResult := CheckConditionDemote(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
 func Test_Demote_By_MemberID_40001_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	memberID := 40001
