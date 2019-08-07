@@ -141,3 +141,7 @@ func CheckConditionDemote(member model.Member) bool {
 func VerifyLevelDemote(database *sql.DB, memberID int) bool {
 	return false
 }
+
+func Demote(database *sql.DB, memberID int) bool {
+	return repository.UpdateLevelDownOne(database, memberID)
+}
