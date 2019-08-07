@@ -421,6 +421,40 @@ func Test_CheckConditionDemote_By_Level_EmeraldPup_MonthlyPoint_70_TeamMemberHig
 	}
 }
 
+func Test_CheckConditionDemote_By_Level_EmeraldPup_MonthlyPoint_100_TeamMemberHigherPearl_1_Should_Be_True(t *testing.T) {
+	expectedResult := true
+	member := model.Member{
+		Level:        4,
+		MonthlyPoint: 100,
+		TeamMember: model.TeamMember{
+			HigherPearl: 1,
+		},
+	}
+
+	actualResult := CheckConditionDemote(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CheckConditionDemote_By_Level_EmeraldPup_MonthlyPoint_150_TeamMemberHigherPearl_2_Should_Be_False(t *testing.T) {
+	expectedResult := false
+	member := model.Member{
+		Level:        4,
+		MonthlyPoint: 150,
+		TeamMember: model.TeamMember{
+			HigherPearl: 2,
+		},
+	}
+
+	actualResult := CheckConditionDemote(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
 func Test_Demote_By_MemberID_40001_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	memberID := 40001
@@ -434,6 +468,25 @@ func Test_Demote_By_MemberID_40001_Should_Be_True(t *testing.T) {
 	database, _ := database.DBConnect(config.GetURI())
 
 	actualResult := Demote(database, memberID)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_VerifyLevelDemote_By_MemberID_40001_Should_Be_True(t *testing.T) {
+	expectedResult := true
+	memberID := 40001
+	config := config.Config{
+		Username: "mlm_dev",
+		Password: "mlm_dev",
+		Host:     "127.0.0.1",
+		Database: "mlm",
+		Port:     "3306",
+	}
+	database, _ := database.DBConnect(config.GetURI())
+
+	actualResult := VerifyLevelDemote(database, memberID)
 
 	if expectedResult != actualResult {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
