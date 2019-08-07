@@ -130,3 +130,22 @@ func Test_UpdateLevelPlusOne_By_MemberID_30001_Should_Be_True(t *testing.T) {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
 	}
 }
+
+func Test_UpdateLevelDownOne_By_MemberID_40001_Should_Be_True(t *testing.T) {
+	expectedResult := true
+	memberID := 40001
+	config := config.Config{
+		Username: "mlm_dev",
+		Password: "mlm_dev",
+		Host:     "127.0.0.1",
+		Database: "mlm",
+		Port:     "3306",
+	}
+	database, _ := database.DBConnect(config.GetURI())
+
+	actualResult := UpdateLevelDownOne(database, memberID)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
