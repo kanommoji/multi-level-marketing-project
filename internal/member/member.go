@@ -130,15 +130,20 @@ func Promote(database *sql.DB, memberID int) bool {
 }
 
 func CheckConditionDemote(member model.Member) bool {
-	if member.Level == levelEmeraldPup &&
-		member.MonthlyPoint < conditionMonthlyPointOfEmeraldPup &&
-		member.TeamMember.HigherPearl <= conditionTeamMemberHigherPearl {
-		return true
+	if member.Level == levelEmeraldPup {
+		if member.MonthlyPoint < conditionMonthlyPointOfEmeraldPup ||
+			member.TeamMember.HigherPearl < conditionTeamMemberHigherPearl {
+			return true
+		}
 	}
 	return false
 }
 
 func VerifyLevelDemote(database *sql.DB, memberID int) bool {
+	member := FindMember(database, memberID)
+	if CheckConditionDemote(member) {
+		return Demote(database, memberID)
+	}
 	return false
 }
 
