@@ -98,3 +98,27 @@ func Test_Decode_MemberID_From_RequestBody_Should_Get_Struct_Member(t *testing.T
 		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
 	}
 }
+
+func Test_DecodeMember_By_MemberID_40001_Should_Get_StatusOK(t *testing.T) {
+	expectedResult := http.StatusOK
+	request := httptest.NewRequest("POST", "/verify_demote", strings.NewReader(`{"member_id":40001}`))
+	writer := httptest.NewRecorder()
+	configURI := config.Config{
+		Username: "mlm_dev",
+		Password: "mlm_dev",
+		Host:     "127.0.0.1",
+		Database: "mlm",
+		Port:     "3306",
+	}
+	databaseConnection, _ := database.DBConnect(configURI.GetURI())
+	multilevelHandler := DatabaseConnection{
+		SQLDatabase: databaseConnection,
+	}
+	multilevelHandler.DemoteMember(writer, request)
+
+	actualResult := writer.Code
+
+	if expectedResult != actualResult {
+		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
+	}
+}
