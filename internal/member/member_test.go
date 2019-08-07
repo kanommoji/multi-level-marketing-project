@@ -455,9 +455,9 @@ func Test_CheckConditionDemote_By_Level_EmeraldPup_MonthlyPoint_150_TeamMemberHi
 	}
 }
 
-func Test_Demote_By_MemberID_40001_Should_Be_True(t *testing.T) {
+func Test_Demote_By_MemberID_29001_Should_Be_True(t *testing.T) {
 	expectedResult := true
-	memberID := 40001
+	memberID := 29001
 	config := config.Config{
 		Username: "mlm_dev",
 		Password: "mlm_dev",
