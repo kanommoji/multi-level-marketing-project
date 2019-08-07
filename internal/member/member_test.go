@@ -339,8 +339,8 @@ func Test_CheckCondition_By_Level_BlueDiamondPup_MonthlyPoint_1600_TeamPoint_160
 		Level:        10,
 		TeamPoint:    160050,
 		MonthlyPoint: 1600,
-		TeamMember:model.TeamMember{
-			HigherRuby:2,
+		TeamMember: model.TeamMember{
+			HigherRuby: 2,
 		},
 	}
 
@@ -398,6 +398,23 @@ func Test_Promote_By_MemberID_30001_Should_Be_True(t *testing.T) {
 	database, _ := database.DBConnect(config.GetURI())
 
 	actualResult := Promote(database, memberID)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CheckConditionDemote_By_Level_EmeraldPup_MonthlyPoint_70_TeamMemberHigherPearl_2_Should_Be_True(t *testing.T) {
+	expectedResult := true
+	member := model.Member{
+		Level:        4,
+		MonthlyPoint: 70,
+		TeamMember: model.TeamMember{
+			HigherPearl: 2,
+		},
+	}
+
+	actualResult := CheckConditionDemote(member)
 
 	if expectedResult != actualResult {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
