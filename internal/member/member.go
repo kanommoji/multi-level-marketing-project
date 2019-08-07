@@ -16,6 +16,7 @@ const (
 	levelEmeraldAlpha        = 6
 	levelRubyPup             = 7
 	levelRubyJuvenile        = 8
+	levelRubyAlpha           = 9
 	levelBlueDiamondJuvenile = 11
 
 	conditionMyPointOfPearlJuvenile = 600
@@ -27,6 +28,7 @@ const (
 	conditionMonthlyPointOfRubyPup          = 400
 	conditionMonthlyPointOfRubyJuvenile     = 600
 	conditionMonthlyPointOfRubyAlpha        = 800
+	conditionMonthlyPointOfBlueDiamondPup   = 1000
 	conditionMonthlyPointOfBlueDiamondAlpha = 2000
 
 	conditionTeamPointOfEmeraldPup       = 4000
@@ -35,10 +37,12 @@ const (
 	conditionTeamPointOfRubyPup          = 20000
 	conditionTeamPointOfRubyJuvenile     = 40000
 	conditionTeamPointOfRubyAlpha        = 100000
+	conditionTeamPointOfBlueDiamondPup   = 100000
 	conditionTeamPointOfBlueDiamondAlpha = 200000
 
 	conditionTeamMemberHigherPearl   = 2
 	conditionTeamMemberHigherEmerald = 2
+	conditionTeamMemberHigherRuby    = 2
 )
 
 func FindMember(database *sql.DB, memberID int) model.Member {
@@ -89,6 +93,12 @@ func CheckCondition(member model.Member) bool {
 	if member.Level == levelRubyJuvenile &&
 		member.MonthlyPoint >= conditionMonthlyPointOfRubyAlpha &&
 		member.TeamPoint > conditionTeamPointOfRubyAlpha {
+		return true
+	}
+	if member.Level == levelRubyAlpha &&
+		member.MonthlyPoint >= conditionMonthlyPointOfBlueDiamondPup &&
+		member.TeamPoint > conditionTeamPointOfBlueDiamondPup &&
+		member.TeamMember.HigherRuby >= conditionTeamMemberHigherRuby {
 		return true
 	}
 	if member.Level == levelBlueDiamondJuvenile &&
