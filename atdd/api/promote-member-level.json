@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f479224d-d603-4d26-bff8-14665241ebf5",
+		"_postman_id": "5242c054-a870-4499-8da6-444e64bfe6cb",
 		"name": "Promote Member Level",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -622,6 +622,10 @@
 									"",
 									"pm.test(\"Monthly point is 100\", function () {",
 									"    pm.expect(jsonData.monthly_point).to.eql(100);",
+									"});",
+									"",
+									"pm.test(\"Team M=member higher pearl is 2\", function () {",
+									"    pm.expect(jsonData.team_member.higher_pearl).to.eql(2);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -722,6 +726,10 @@
 									"",
 									"pm.test(\"Monthly point is 120\", function () {",
 									"    pm.expect(jsonData.monthly_point).to.eql(120);",
+									"});",
+									"",
+									"pm.test(\"Team member higher pearl is 2\", function () {",
+									"    pm.expect(jsonData.team_member.higher_pearl).to.eql(2);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -783,6 +791,10 @@
 									"",
 									"pm.test(\"Monthly point is 50\", function () {",
 									"    pm.expect(jsonData.monthly_point).to.eql(50);",
+									"});",
+									"",
+									"pm.test(\"Team member higher pearl is 1\", function () {",
+									"    pm.expect(jsonData.team_member.higher_pearl).to.eql(1);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -883,6 +895,10 @@
 									"",
 									"pm.test(\"Monthly point is 100\", function () {",
 									"    pm.expect(jsonData.monthly_point).to.eql(100);",
+									"});",
+									"",
+									"pm.test(\"Team member higher pearl is 1\", function () {",
+									"    pm.expect(jsonData.team_member.higher_pearl).to.eql(1);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1588,6 +1604,10 @@
 									"",
 									"pm.test(\"Monthly point is 350\", function () {",
 									"    pm.expect(jsonData.monthly_point).to.eql(350);",
+									"});",
+									"",
+									"pm.test(\"Team member higher emerald is 2\", function () {",
+									"    pm.expect(jsonData.team_member.higher_emerald).to.eql(2);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1688,6 +1708,10 @@
 									"",
 									"pm.test(\"Monthly point is 400\", function () {",
 									"    pm.expect(jsonData.monthly_point).to.eql(400);",
+									"});",
+									"",
+									"pm.test(\"Team member higher emerald is 2\", function () {",
+									"    pm.expect(jsonData.team_member.higher_emerald).to.eql(2);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1749,6 +1773,10 @@
 									"",
 									"pm.test(\"Monthly point is 350\", function () {",
 									"    pm.expect(jsonData.monthly_point).to.eql(350);",
+									"});",
+									"",
+									"pm.test(\"Team member higher emerald is 2\", function () {",
+									"    pm.expect(jsonData.team_member.higher_emerald).to.eql(2);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1849,6 +1877,10 @@
 									"",
 									"pm.test(\"Monthly point is 370\", function () {",
 									"    pm.expect(jsonData.monthly_point).to.eql(370);",
+									"});",
+									"",
+									"pm.test(\"Team member higher emerald is 2\", function () {",
+									"    pm.expect(jsonData.team_member.higher_emerald).to.eql(2);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2554,6 +2586,10 @@
 									"",
 									"pm.test(\"Monthly point is 950\", function () {",
 									"    pm.expect(jsonData.monthly_point).to.eql(950);",
+									"});",
+									"",
+									"pm.test(\"Team member higher ruby is 2\", function () {",
+									"    pm.expect(jsonData.team_member.higher_ruby).to.eql(2);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2654,6 +2690,10 @@
 									"",
 									"pm.test(\"Monthly point is 1000\", function () {",
 									"    pm.expect(jsonData.monthly_point).to.eql(1000);",
+									"});",
+									"",
+									"pm.test(\"Team member higher ruby is 2\", function () {",
+									"    pm.expect(jsonData.team_member.higher_ruby).to.eql(2);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2715,6 +2755,10 @@
 									"",
 									"pm.test(\"Monthly point is 950\", function () {",
 									"    pm.expect(jsonData.monthly_point).to.eql(950);",
+									"});",
+									"",
+									"pm.test(\"Team member higher ruby is 1\", function () {",
+									"    pm.expect(jsonData.team_member.higher_ruby).to.eql(1);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2815,6 +2859,10 @@
 									"",
 									"pm.test(\"Monthly point is 970\", function () {",
 									"    pm.expect(jsonData.monthly_point).to.eql(970);",
+									"});",
+									"",
+									"pm.test(\"Team member higher ruby is 1\", function () {",
+									"    pm.expect(jsonData.team_member.higher_ruby).to.eql(1);",
 									"});"
 								],
 								"type": "text/javascript"
