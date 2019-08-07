@@ -17,28 +17,31 @@ const (
 	levelRubyPup             = 7
 	levelRubyJuvenile        = 8
 	levelRubyAlpha           = 9
+	levelBlueDiamondPup      = 10
 	levelBlueDiamondJuvenile = 11
 
 	conditionMyPointOfPearlJuvenile = 600
 	conditionMyPointOfPearlAlpha    = 1000
 
-	conditionMonthlyPointOfEmeraldPup       = 100
-	conditionMonthlyPointOfEmeraldJuvenile  = 160
-	conditionMonthlyPointOfEmeraldAlpha     = 200
-	conditionMonthlyPointOfRubyPup          = 400
-	conditionMonthlyPointOfRubyJuvenile     = 600
-	conditionMonthlyPointOfRubyAlpha        = 800
-	conditionMonthlyPointOfBlueDiamondPup   = 1000
-	conditionMonthlyPointOfBlueDiamondAlpha = 2000
+	conditionMonthlyPointOfEmeraldPup          = 100
+	conditionMonthlyPointOfEmeraldJuvenile     = 160
+	conditionMonthlyPointOfEmeraldAlpha        = 200
+	conditionMonthlyPointOfRubyPup             = 400
+	conditionMonthlyPointOfRubyJuvenile        = 600
+	conditionMonthlyPointOfRubyAlpha           = 800
+	conditionMonthlyPointOfBlueDiamondPup      = 1000
+	conditionMonthlyPointOfBlueDiamondJuvenile = 1600
+	conditionMonthlyPointOfBlueDiamondAlpha    = 2000
 
-	conditionTeamPointOfEmeraldPup       = 4000
-	conditionTeamPointOfEmeraldJuvenile  = 8000
-	conditionTeamPointOfEmeraldAlpha     = 12000
-	conditionTeamPointOfRubyPup          = 20000
-	conditionTeamPointOfRubyJuvenile     = 40000
-	conditionTeamPointOfRubyAlpha        = 100000
-	conditionTeamPointOfBlueDiamondPup   = 100000
-	conditionTeamPointOfBlueDiamondAlpha = 200000
+	conditionTeamPointOfEmeraldPup          = 4000
+	conditionTeamPointOfEmeraldJuvenile     = 8000
+	conditionTeamPointOfEmeraldAlpha        = 12000
+	conditionTeamPointOfRubyPup             = 20000
+	conditionTeamPointOfRubyJuvenile        = 40000
+	conditionTeamPointOfRubyAlpha           = 100000
+	conditionTeamPointOfBlueDiamondPup      = 100000
+	conditionTeamPointOfBlueDiamondJuvenile = 160000
+	conditionTeamPointOfBlueDiamondAlpha    = 200000
 
 	conditionTeamMemberHigherPearl   = 2
 	conditionTeamMemberHigherEmerald = 2
@@ -99,6 +102,11 @@ func CheckCondition(member model.Member) bool {
 		member.MonthlyPoint >= conditionMonthlyPointOfBlueDiamondPup &&
 		member.TeamPoint > conditionTeamPointOfBlueDiamondPup &&
 		member.TeamMember.HigherRuby >= conditionTeamMemberHigherRuby {
+		return true
+	}
+	if member.Level == levelBlueDiamondPup &&
+		member.MonthlyPoint >= conditionMonthlyPointOfBlueDiamondJuvenile &&
+		member.TeamPoint > conditionTeamPointOfBlueDiamondJuvenile {
 		return true
 	}
 	if member.Level == levelBlueDiamondJuvenile &&

@@ -333,6 +333,39 @@ func Test_CheckCondition_By_Level_BlueDiamondJuvenile_MonthlyPoint_2030_TeamPoin
 	}
 }
 
+func Test_CheckCondition_By_Level_BlueDiamondPup_MonthlyPoint_1600_TeamPoint_160050_Should_Be_True(t *testing.T) {
+	expectedResult := true
+	member := model.Member{
+		Level:        10,
+		TeamPoint:    160050,
+		MonthlyPoint: 1600,
+		TeamMember:model.TeamMember{
+			HigherRuby:2,
+		},
+	}
+
+	actualResult := CheckCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CheckCondition_By_Level_BlueDiamondPup_MonthlyPoint_1600_TeamPoint_160050_Should_Be_False(t *testing.T) {
+	expectedResult := false
+	member := model.Member{
+		Level:        10,
+		TeamPoint:    150050,
+		MonthlyPoint: 1600,
+	}
+
+	actualResult := CheckCondition(member)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
 func Test_VerifyLevel_By_MemberID_30001_Should_Be_True(t *testing.T) {
 	expectedResult := true
 	memberID := 30001
