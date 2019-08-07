@@ -31,7 +31,7 @@
 									"});",
 									"",
 									"pm.test(\"Monthly point is 70\", function () {",
-									"    pm.expect(jsonData.monthly_point).to.eql(150);",
+									"    pm.expect(jsonData.monthly_point).to.eql(70);",
 									"});",
 									"",
 									"pm.test(\"Team member higher pearl is 2\", function () {",
