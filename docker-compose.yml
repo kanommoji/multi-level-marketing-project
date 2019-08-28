@@ -4,26 +4,37 @@ services:
     container_name: my-multilevel
     image: jinnerzaza/multilevel:1
     environment:
-      TIME: 20190701
-    build:
-      context: .
-    depends_on:
-      - my-mariadb
-    ports:
-    - 8080:8080
-
-  my-mariadb:
-    container_name: my-mariadb
-    image: mariadb:10.4.7
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: mlm_dev
       PORT_DB: 3306
       USERNAME_DB: mlm_dev
       PASSWORD_DB: mlm_dev
       DATABASE_NAME: mlm
-      HOST_DB: 127.0.0.1
+      HOST_DB: my-mariadb
+      TIME: "20190701"
+    build:
+      context: .
+    ports:
+    - 8080:8080
+    depends_on:
+      - my-mariadb
+    command: >
+        /bin/sh -c "
+          while ! nc -z -w1 mysql 3306;
+          do
+            echo sleeping;
+            sleep 1;
+          done;
+          echo Connected!;
+        "
+
+  my-mariadb:
+    container_name: my-mariadb
+    image: mariadb:10.4.7
+    environment:
+      MYSQL_ROOT_PASSWORD: mlm_dev
+      MYSQL_USER: mlm_dev
+      MYSQL_PASSWORD: mlm_dev
+      MYSQL_DATABASE: mlm
     volumes:
       - ./sql/prepared-data.sql:/docker-entrypoint-initdb.d/prepared-data.sql
     ports:
-    - 3300:3300
+    - 3306:3306
